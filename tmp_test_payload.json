@@ -1,0 +1,36 @@
+{
+  "info": {
+    "marque": "Tunisie",
+    "numero": "T-1234",
+    "power": 100,
+    "mtu1": 15.75,
+    "mtu2": 10.2,
+    "btu2": 220,
+    "btu2_2": 110,
+    "bti2_2": 0.5,
+    "mti2_1": 1.23,
+    "bti2": 0.8,
+    "prises": "TAP",
+    "norme": "CEI 60076",
+    "couplage": "Y",
+    "nbphase": 2,
+    "type": "Biphasé",
+    "client": "ACME"
+  },
+  "voltage_ratio": {
+    "measured": [[1.01, 0.99],[1.02,1.00],[1.00,1.00],[0.98,0.99],[1.03,1.01]],
+    "theoretical": [[1.00,1.00],[1.00,1.00],[1.00,1.00],[1.00,1.00],[1.00,1.00]],
+    "conclusions": ["conforme","conforme","conforme","non conforme","conforme"]
+  },
+  "no_load_test": [
+    { "position": 3, "p0": 144, "iA": 1.6, "iB": 0.344, "iC": 0.1, "i": 0.68, "u0": 342, "pom": 0.1, "poNorm": "OK", "i0Norm": "OK", "conclusion": "conforme" },
+    { "position": 3, "p0": 130, "iA": 0.8, "iB": 0.45, "iC": 0.2, "i": 0.48, "u0": 340, "pom": 0.05, "poNorm": "OK", "i0Norm": "OK", "conclusion": "conforme" }
+  ],
+  "short_circuit_test": { "pos": "3", "u": 10, "ia": 20, "pcc": 200, "ucc": 0.5, "temp": 25, "pertesCuivre": 12, "uccNorm": "OK", "resultat": "conforme" },
+  "dielectric_test": { "spires": { "freq": 100, "tension": 500, "temps": 1, "resultat": "conforme" }, "htbt": { "freq": 50, "tension": 100, "temps": 1, "resultat": "conforme" }, "btht": { "freq": 50, "tension": 110, "temps": 1, "resultat": "conforme" } },
+  "resistance_test": [
+    { "mt1": 0.5, "mt2": 0.51, "mt3": 0.49, "mtMean": 0.5, "bt": 0.02, "bti": 0.021 },
+    { "mt1": 0.52, "mt2": 0.53, "mt3": 0.54, "mtMean": 0.53, "bt": 0.025, "bti": 0.026 }
+  ],
+  "date": "2025-08-19T10:00:00Z"
+}

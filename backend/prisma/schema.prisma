@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String
+  password String
+  laboname String
+}
+
+model PvEssai {
+  id                 Int      @id @default(autoincrement())
+  marque             String?
+  power              Float?
+  frequency          Int?
+  numero             String?
+  phases             Int?
+  type               String?
+  client             String?
+  mtu1               Float?
+  mtu2               Float?
+  btu2               Float?
+  btu2_2             String?  // Added for biphasé
+  bti2_2             String?  // Added for biphasé
+  mti2_1             String?  // Added for biphasé
+  prises             String?
+  norme              String?
+  couplage           String?
+  bti2               Float?
+  date               DateTime?
+  voltage_ratio      Json?
+  no_load_test       Json?
+  short_circuit_test Json?
+  dielectric_test    Json?
+  resistance_test    Json?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
