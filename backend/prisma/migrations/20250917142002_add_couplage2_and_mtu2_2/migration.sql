@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "PvEssai" ADD COLUMN     "mtu2_2" DOUBLE PRECISION;

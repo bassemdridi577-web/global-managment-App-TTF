@@ -16,7 +16,7 @@ model User {
 }
 
 model PvEssai {
-  id                 Int      @id @default(autoincrement())
+  id                 Int       @id @default(autoincrement())
   marque             String?
   power              Float?
   frequency          Int?
@@ -24,22 +24,52 @@ model PvEssai {
   phases             Int?
   type               String?
   client             String?
+  mission            String?
   mtu1               Float?
   mtu2               Float?
   btu2               Float?
-  btu2_2             String?  // Added for biphasé
-  bti2_2             String?  // Added for biphasé
-  mti2_1             String?  // Added for biphasé
   prises             String?
   norme              String?
   couplage           String?
+  matiere            String?
+  refroidissement    String?
   bti2               Float?
   date               DateTime?
   voltage_ratio      Json?
+  voltage_ratio_2    Json?
   no_load_test       Json?
+  no_load_test_2     Json?
   short_circuit_test Json?
   dielectric_test    Json?
   resistance_test    Json?
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  bitention_tests    Json?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  bti2_2             String?
+  btu2_2             String?
+  mti2_1             String?
+  operateur          String?
+  conformite         String?
+  bitention          String?
+  tensionType        String?
+  list1              String?
+  list2              String?
+  list3              String?
+  list4              String?
+  mtU1_2             String?
+  couplage2          String?
+  mtu2_2             Float?
+  
+}
+
+model Commande {
+  id        Int      @id @default(autoincrement())
+  numero    String?
+  client    String?
+  items     Json?
+  total     Float?
+  status    String?  @default("pending")
+  formData  Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
