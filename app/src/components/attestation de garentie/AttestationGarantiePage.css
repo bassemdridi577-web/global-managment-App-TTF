@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap');
+
+:root {
+    --attestation-primary-color: #003366;
+    --secondary-color: #d32f2f;
+    --text-color: #333;
+    --border-color: #ccc;
+    --background-color: #f4f7f9;
+    --certificate-bg: #ffffff;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.attestation-container {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--certificate-bg);
+    margin: 40px auto;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    color: var(--text-color);
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 10px solid var(--attestation-primary-color);
+    box-sizing: border-box;
+}
+
+.attestation-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../public/TT2.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    opacity: 0.03;
+    z-index: 0;
+}
+
+.header,
+.intro,
+.exclusions-section,
+.designation-section,
+.warranty-until,
+.footer-section,
+.page-footer {
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 15mm;
+}
+
+.header-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10mm;
+}
+
+.attestation-logo {
+    width: 200px;
+}
+
+.iso-logos {
+    display: flex;
+    gap: 15px;
+}
+
+.iso-logos img {
+    width: 100px;
+}
+
+.header h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 28pt;
+    font-weight: 700;
+    color: var(--attestation-primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 10mm 0;
+}
+
+.intro p,
+.exclusions-section p {
+    font-size: 11pt;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 4mm;
+}
+
+.exclusions-section {
+    margin: 10mm 0;
+    padding: 5mm;
+    background-color: #f8f8f8;
+    border-left: 3px solid var(--secondary-color);
+}
+
+.exclusions-section h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 14pt;
+    color: var(--attestation-primary-color);
+    margin-bottom: 3mm;
+}
+
+.designation-section h3 {
+    font-family: 'Merriweather', serif;
+    font-size: 14pt;
+    color: var(--attestation-primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 3mm;
+    margin-bottom: 5mm;
+}
+
+.designation-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4mm 8mm;
+    align-items: center;
+    margin-bottom: 10mm;
+}
+
+.designation-grid .label {
+    font-weight: 700;
+    font-size: 11pt;
+}
+
+.designation-grid .value {
+    font-size: 11pt;
+    background-color: #f0f5fa;
+    border-radius: 4px;
+    padding: 2mm 3mm;
+    border: 1px solid #dce8f5;
+}
+
+.value[contentEditable="true"]:hover,
+.value[contentEditable="true"]:focus {
+    background-color: #e6f0fa;
+    outline: 2px solid var(--attestation-primary-color);
+    box-shadow: 0 0 5px rgba(0, 51, 102, 0.3);
+}
+
+.warranty-until {
+    text-align: center;
+    font-size: 12pt;
+    margin-top: 10mm;
+    padding: 4mm;
+    background-color: var(--attestation-primary-color);
+    color: white;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer-section {
+    text-align: right;
+    margin-top: 20mm;
+    margin-bottom: 15mm;
+    font-family: 'Merriweather', serif;
+    font-size: 12pt;
+    font-style: italic;
+    color: var(--attestation-primary-color);
+}
+
+.page-footer {
+    text-align: center;
+    font-size: 8pt;
+    color: #666;
+    border-top: 1px solid var(--border-color);
+    padding-top: 5mm;
+    margin-top: 15mm;
+}
+
+.page-footer p {
+    margin: 1mm 0;
+}
+
+.buttons-container.no-print {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 15px;
+}
+
+.buttons-container.no-print button {
+    font-family: 'Lato', sans-serif;
+    padding: 15px 35px;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--attestation-primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.buttons-container.no-print button:hover {
+    background-color: #004a8d;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.screen-only {
+    display: inline-block;
+}
+
+.print-only {
+    display: none;
+}
+
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+    body {
+        background-color: #fff !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .screen-only {
+        display: none;
+    }
+
+    .print-only {
+        display: inline;
+    }
+
+    .attestation-container {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 15mm;
+        border: 10px solid #003366 !important;
+        box-shadow: none;
+        border-radius: 0;
+        background-color: #ffffff !important;
+    }
+
+    .attestation-container::before {
+        opacity: 0.04;
+        background-size: 50%;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    .attestation-container,
+    .attestation-container * {
+        visibility: visible;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .attestation-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .attestation-logo {
+        width: 180px;
+    }
+
+    .iso-logos img {
+        width: 90px;
+    }
+
+    .header h1 {
+        font-size: 24pt;
+        color: #003366 !important;
+    }
+
+    .intro p,
+    .exclusions-section p,
+    .designation-grid .label,
+    .designation-grid .value {
+        font-size: 10pt;
+        color: #333 !important;
+    }
+
+    .exclusions-section {
+        border-left: 3px solid #d32f2f !important;
+        background-color: #f8f8f8 !important;
+    }
+
+    .designation-grid {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .designation-grid .value,
+    .value[contentEditable="true"] {
+        border: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        outline: none !important;
+        background-color: #f0f5fa !important;
+    }
+
+    .page-footer {
+        font-size: 7pt;
+        color: #666 !important;
+    }
+
+    .warranty-until {
+        background-color: #1474d4 !important;
+        color: white !important;
+    }
+}

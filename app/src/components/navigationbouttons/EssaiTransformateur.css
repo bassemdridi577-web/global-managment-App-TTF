@@ -1,0 +1,30 @@
+.nav-btn.active {
+  background: #e53935;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.12);
+  border: 1.5px solid #b71c1c;
+}
+
+/* again reuse .nav-btn if you want consistency */
+.nav-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.nav-btn:hover {
+  background: #e53835b9;
+  color: #fff;
+}
+
+/* Prevent hover color on active button */
+.nav-btn.active:hover {
+  background: #e53935;
+  color: #fff;
+}

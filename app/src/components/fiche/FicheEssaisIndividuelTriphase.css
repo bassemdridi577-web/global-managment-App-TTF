@@ -1,0 +1,99 @@
+:root{
+	--bg: #f8fafb;
+	--card: #fff;
+	--muted: #59606a;
+}
+.fiche-page-root{
+	padding: 20px;
+	background: var(--bg);
+	min-height: 100vh;
+	box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+.fiche-actions{ display:flex; gap:12px; justify-content:flex-end; margin-bottom:12px }
+.back-btn, .print-btn{ padding:8px 12px; border-radius:6px; border:none; cursor:pointer }
+.fiche-actions .back-btn{
+	background: #23286b !important;
+	color: #fff !important;
+	border: none !important;
+		background-image: none !important;
+		-webkit-appearance: none !important;
+		appearance: none !important;
+}
+.fiche-actions .back-btn:hover{
+	background: #357abd !important;
+}
+.print-btn{ background:#2b7be4; color:#fff }
+.fiche-container{ background:var(--card); padding:18px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.06) }
+.fiche-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:16px }
+.fiche-title{ font-weight:700; font-size:18px }
+.fiche-meta{ color:var(--muted) }
+.boxed-header { display:flex; align-items:center; justify-content:space-between; border:1px solid #000; padding:8px 12px; margin-bottom:12px }
+.header-left, .header-center, .header-right { display:flex; align-items:center }
+.header-left { width:18% }
+.header-center { width:58%; justify-content:center }
+.header-right { width:24%; justify-content:flex-end }
+.fiche-logo { max-height:56px; max-width:180px; object-fit:contain }
+.fiche-custom-header {
+  display: flex;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.header-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.fiche-table-wrap{ overflow:auto }
+
+.fiche-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.fiche-table th,
+.fiche-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.fiche-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.fiche-table thead th {
+  vertical-align: middle;
+}
+
+.fiche-footer{ display:flex; justify-content:space-between; margin-top:18px; color:var(--muted) }
+
+/* Print styles: landscape */
+@media print{
+  /* fiche-specific @page is injected inline during the fiche print flow; avoid global @page here */
+  html, body { height: auto; }
+  .fiche-page-root{ padding:6px; background: #fff; min-height: auto }
+  .fiche-actions{ display:none }
+  .fiche-container{ box-shadow: none; background: #fff; border-radius: 0 }
+
+  /* Table layout for print */
+  .fiche-table{ width:100%; font-size:11px; border-color:#aaa }
+  .fiche-table th, .fiche-table td{ padding:6px }
+  .fiche-table-wrap{ overflow: visible }
+
+  /* Avoid breaking rows across pages */
+  .fiche-table tr{ page-break-inside: avoid; break-inside: avoid }
+
+  /* Repeat the table header on each printed page */
+  .fiche-table thead { display: table-header-group }
+
+  /* Footer should be visible at the end of the printed content */
+  .fiche-footer{ color:#000; font-size:11px }
+
+  /* Print color adjustment */
+  * { print-color-adjust: exact; -webkit-print-color-adjust: exact }
+}

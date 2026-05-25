@@ -1,0 +1,77 @@
+# Rapport de Spécifications Techniques : Calculs et Paramètres de l'Application "Étude Transformateur"
+
+## Introduction
+Ce document présente une synthèse détaillée des algorithmes et des méthodes de calcul implémentés dans l'application. L'objectif est de garantir une transparence totale sur la provenance des données affichées dans les rapports de bilan et d'assurer la précision technique nécessaire à la conception des transformateurs.
+
+---
+
+## 1. Analyse du Bilan Électrique (`BilanPage.jsx`)
+
+Le tableau de bilan regroupe les résultats finaux de l'étude. Ces calculs sont automatisés pour réduire les erreurs humaines et assurer la réactivité du système face aux changements de conception.
+
+### 1.1. Calculs des Courants et Grandeurs de Base
+| Paramètre | Calcul / Logique | Finalité |
+| :--- | :--- | :--- |
+| **Courant Primaire (I1)** | `(Puissance * 1000) / (U1 * √3)` | Détermine le courant nominal en ligne du côté haute tension. |
+| **Courant Secondaire (I2)** | `(Puissance * 1000) / (U2 * √3)` | Détermine le courant nominal en ligne du côté basse tension. |
+| **Diamètre Colonne (PRA)** | Valeur synchronisée avec `b1_bn` | Utilise la géométrie réelle définie dans l'onglet Général. |
+
+### 1.2. Évaluation des Pertes de Bobinage (Effet Joule & Connexions)
+L'application intègre désormais une gestion dynamique des températures de référence pour une précision accrue.
+
+*   **Pertes par Effet Joule (Perte BT/MT) :**
+    Calculées sur la base de la résistance V.N. (Volume Net) du conducteur.
+    *   *Formule :* `I² * 3 * Resistance_VN`
+*   **Pertes de Connexion :**
+    Incluent une correction thermique automatique selon la température initiale (C1) et la température de référence (C2).
+    *   *Formule :* `I² * 3 * (R_conn * ((235 + C1) / (235 + C2)))`
+*   **Pertes de Court-Circuit (C/C) Totales :**
+    Somme des composantes ci-dessus pour chaque enroulement.
+    *   *Logique :* `Perte Joule + Perte Connection`
+
+### 1.3. Géométrie du Circuit Magnétique
+| Paramètre | Source de donnée |
+| :--- | :--- |
+| **Poids CM (Total)** | Somme cumulée des poids de chaque paquet définis dans l'onglet "CM 4C". |
+| **Épaisseur A CM** | Dimension maximale de l'empilage (`Max(S_Haut) * 2`), cruciale pour le dimensionnement de la cuve. |
+| **Bobinage Ovale Moyenne** | `(π * D_int + π * (C_long_ext - epACM/10))/2 + (epACM/10) * 2` | Périmètre moyen calculé pour les bobines ovales. |
+| **Induction Théorique** | Calculée via le flux magnétique et la section nette du fer (prend en compte le couplage spécifique, ex: Yzn11). |
+
+---
+
+## 2. Étude du Circuit Magnétique (`Onglet CM 4C`)
+
+L'optimisation des pertes à vide repose sur une modélisation mathématique précise de l'induction.
+
+### 2.1. Calcul de l'Induction (B)
+L'induction est recalculée en temps réel dès qu'un paramètre géométrique ou électrique est modifié :
+*   **Section (cm²) :** Calculée par l'intégration géométrique de chaque gradin dans le circuit magnétique.
+*   **Induction (Tesla) :** `(Volt par Spire * 10^4) / (4.44 * Section * Fréquence)`
+
+### 2.2. Modélisation des Pertes Spécifiques (Courbes M)
+Pour chaque type de tôle (M-5, M-4, M-3), l'application utilise des **polynômes de degré 6** pour interpoler les pertes watt/kg en fonction de l'induction réelle. Cela permet d'obtenir une valeur de `Perte Po Efficace` extrêmement précise, bien au-delà d'une simple lecture de table.
+
+---
+
+## 3. Gestion des Données et Saisie
+
+Le système distingue clairement deux types de flux de données pour garantir l'intégrité de l'étude :
+
+### 3.1. Entrées Critiques (Saisie Manuelle)
+*   **Caractéristiques de Référence :** T° Initial (C1), T° Référence (C2).
+*   **Propriétés Physiques :** Résistivités de l'Aluminium et du Cuivre à 20°C et à température de travail.
+*   **Données de Bobinage :** Nombre de spires, dimensions des conducteurs, résistances de connexion mesurées.
+
+### 3.2. Flux Automatisé
+Une fois les entrées critiques saisies, l'application génère automatiquement :
+1.  Les courants nominaux.
+2.  Les sections actives et hauteurs moyennes.
+3.  L'ensemble du bilan de pertes (BT/MT/Connexions).
+4.  Le diagnostic de conformité (basé sur les limites d'échauffement STEG ou Standard).
+
+---
+
+## Conclusion
+Cette architecture permet de simuler rapidement différentes variantes de conception tout en garantissant que chaque calcul respecte les normes physiques et les exigences contractuelles. Le passage d'une conception "Aluminium" à "Cuivre" ou le changement d'une température de référence met à jour l'intégralité du bilan en moins d'une seconde.
+
+*Document mis à jour le 9 Janvier 2026.*

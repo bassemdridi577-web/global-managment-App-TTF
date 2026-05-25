@@ -1,0 +1,172 @@
+html,
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  /* Remove the blue flash on tap */
+}
+
+/* --- Mobile Touch Targets & Accessibility (Excluding PV Page) --- */
+body:not(.pv-page-active) button,
+body:not(.pv-page-active) a,
+body:not(.pv-page-active) input,
+body:not(.pv-page-active) select,
+body:not(.pv-page-active) .clickable {
+  min-height: 44px;
+  /* Apple/Google standard for thumbs */
+  touch-action: manipulation;
+}
+
+/* Prevent text selection on buttons to avoid awkward highlights on mobile */
+body:not(.pv-page-active) button,
+.sidebar-menu li a {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Better mobile scrollbars */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+/* --- 3D Shape Preview & Premium UI --- */
+.shape-preview-box {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.shape-preview-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: #3182ce !important;
+}
+
+.shape-preview-box::after {
+  content: "CLIQUER POUR AGRANDIR";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(49, 130, 206, 0.9);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.shape-preview-box:hover::after {
+  opacity: 1;
+}
+
+/* Glassmorphism for 3D Overlays */
+.glass-overlay {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+/* --- Global: Remove Input Number Spinners (Arrows) --- */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+body:not(.pv-page-active) {
+  background: #f8f9fb;
+  font-size: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Specific background for PV Page */
+body.pv-page-active {
+  background: white !important;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ========================================
+   NUCLEAR OPTION: Completely disable browser :invalid styling
+   This prevents Chrome/Firefox from adding red borders, shadows, and height changes
+   ======================================== */
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+  outline: none !important;
+  box-shadow: none !important;
+  border-width: inherit !important;
+  border-color: inherit !important;
+  background-image: none !important;
+  background-color: inherit !important;
+}
+
+/* Chrome-specific fix */
+input:invalid {
+  border: inherit !important;
+}
+
+/* ========================================
+   LOCK HEIGHT FOREVER - Prevent ANY expansion
+   (SCREEN ONLY - DO NOT APPLY TO PRINT)
+   ======================================== */
+@media screen {
+
+  /* Scoping these aggressive styles only to specific legacy forms */
+  .ajout-transformateur-form-container input,
+  .ajout-transformateur-form-container select,
+  .ajout-transformateur-form-container textarea {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    box-sizing: border-box !important;
+    line-height: normal !important;
+    padding: 0.3rem !important;
+  }
+
+  /* Prevent textarea resize in these specific forms */
+  .ajout-transformateur-form-container textarea {
+    resize: none !important;
+  }
+
+  /* Force consistent sizing for diverse input types within these forms */
+  .ajout-transformateur-form-container input[type="text"],
+  .ajout-transformateur-form-container input[type="email"],
+  .ajout-transformateur-form-container input[type="password"],
+  .ajout-transformateur-form-container input[type="number"],
+  .ajout-transformateur-form-container input[type="date"],
+  .ajout-transformateur-form-container input[type="time"],
+  .ajout-transformateur-form-container input[type="tel"],
+  .ajout-transformateur-form-container input[type="url"],
+  .ajout-transformateur-form-container select {
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+  }
+}

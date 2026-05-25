@@ -1,0 +1,426 @@
+/* PRINT STYLES */
+@media print {
+
+  /* Guarantee top border for first row of Essais A Vide table in print */
+  .pvessai-printable-table.no-load-test-table tr:first-child th {
+    border-top: 2px solid #333 !important;
+    box-shadow: 0 -2px 0 #333 !important;
+  }
+
+  /* Page setup */
+  @page {
+    size: A4 portrait;
+    margin: 3mm;
+    /* Reduce margins to allow more content width */
+  }
+
+  /* Reset everything for clean print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    width: 297mm !important;
+    height: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    font-family: Arial, sans-serif !important;
+
+    overflow: hidden !important;
+  }
+
+  /* Hide everything except the printable container */
+  body * {
+    visibility: hidden;
+  }
+
+  .pvessai-printable-container,
+  .pvessai-printable-container * {
+    visibility: visible;
+  }
+
+  /* Updated container positioning for print */
+  .pvessai-printable-container {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    min-height: 297mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    font-size: 9pt !important;
+    box-sizing: border-box !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .signature-box {
+    background-color: #f0f0f0 !important;
+    border: 1px solid #000 !important;
+  }
+
+  .signature-box .signature-text {
+    color: white !important;
+  }
+
+  /* Hide print button and any .printable class */
+  .print-button,
+  .printable,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-header-bottom-row {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    /* Align to bottom */
+    width: 100% !important;
+    padding-top: 5pt !important;
+    /* Add some space above */
+  }
+
+  /* Header styles for print */
+  .pvessai-printable-header {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+  .pvessai-printable-title {
+    font-size: 16pt !important;
+    font-weight: bold !important;
+    margin-bottom: 4pt !important;
+    color: black !important;
+  }
+
+  .pvessai-printable-table-subtitle {
+    font-size: 18pt !important;
+    color: #666 !important;
+    margin-bottom: 6pt !important;
+  }
+
+  body.print-pv .pvessai-printable-table-subtitle {
+    font-size: 12pt !important;
+    color: #2a3b8f !important;
+    margin-bottom: 6pt !important;
+  }
+
+  .pvessai-printable-table-info-line {
+    font-size: 18pt !important;
+    color: #222 !important;
+    margin-left: 12px !important;
+    margin-bottom: 2px !important;
+  }
+
+  body.print-pv .pvessai-printable-table-info-line {
+    font-size: 12pt !important;
+    color: #222 !important;
+    margin-left: 12px !important;
+    margin-bottom: 2px !important;
+  }
+
+  body.print-pv .resistance-temp-line {
+    font-size: 12pt !important;
+  }
+
+  /* Info grid layout */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+
+  .info-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+  }
+
+  .info-row .label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  /* Divider for print */
+  .pvessai-printable-divider {
+    border-top: 1pt solid #000 !important;
+    margin: 4pt 0 !important;
+  }
+
+  /* Table sections for print */
+  .pvessai-printable-table-section {
+    background: white !important;
+    border: 1pt solid #000 !important;
+    border-radius: 5px !important;
+    padding: 5px !important;
+    margin-bottom: 3pt !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-top: 2pt solid #000 !important;
+    /* Added solid black top border */
+  }
+
+  .pvessai-printable-table-title {
+    font-size: 12pt !important;
+    font-weight: bold !important;
+    margin-bottom: 4pt !important;
+    color: black !important;
+    padding-left: 0 !important;
+  }
+
+  /* Ensure 'Essais à vide' (no-load-test) uses the same title size as other tables in print */
+  .pvessai-printable-table.no-load-test-table+.pvessai-printable-table-title,
+  .pvessai-printable-table-section .pvessai-printable-table-title,
+  .pvessai-printable-table.no-load-test-table .pvessai-printable-table-title,
+  .pvessai-printable-table-title.no-load-test {
+    font-size: 13pt !important;
+    font-weight: 600 !important;
+    margin-bottom: 4pt !important;
+    color: #2a3b8f !important;
+  }
+
+  /* Data tables for print */
+  .pvessai-printable-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: white !important;
+    border: 1pt solid #000 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    table-layout: auto !important;
+    /* Allow table to adjust */
+    width: 100% !important;
+    /* Ensure table fits within container */
+    max-width: 100% !important;
+    /* Prevent overflow */
+  }
+
+  /* Ensure outer borders are visible for all tables in print */
+
+  .pvessai-printable-table th:first-child,
+  .pvessai-printable-table td:first-child {
+    border-left: 1pt solid #000 !important;
+    box-shadow: none !important;
+  }
+
+  .pvessai-printable-table th:last-child,
+  .pvessai-printable-table td:last-child {
+    border-right: 1pt solid #000 !important;
+  }
+
+  .pvessai-printable-table tr:first-child th,
+  .pvessai-printable-table tr:first-child td {
+    border-top: 1pt solid #000 !important;
+  }
+
+  .pvessai-printable-table tr:last-child th,
+  .pvessai-printable-table tr:last-child td {
+    border-bottom: 1pt solid #000 !important;
+  }
+
+  .pvessai-printable-table th,
+  .pvessai-printable-table td {
+    font-size: 12pt !important;
+    padding: 0.5pt 1pt !important;
+  }
+
+  .pvessai-printable-table th {
+    font-size: 13pt !important;
+  }
+
+  .pvessai-printable-table.no-load-test-table th {
+    font-size: 22pt !important;
+    font-weight: 600 !important;
+    color: #2a3b8f !important;
+  }
+
+  body.print-pv .pvessai-printable-table.no-load-test-table th {
+    font-size: 12pt !important;
+    font-weight: 600 !important;
+    color: #2a3b8f !important;
+  }
+
+  .info-table td {
+    font-size: 13pt !important;
+    padding: 1pt 2pt !important;
+  }
+
+  .pvessai-printable-table th {
+    background: #f0f0f0 !important;
+    font-weight: bold !important;
+    color: black !important;
+  }
+
+  /* Input fields for print */
+  .pvessai-printable-input {
+    width: auto !important;
+    min-width: 40pt !important;
+    border: 0.5pt solid #999 !important;
+    border-radius: 0 !important;
+    padding: 1pt 2pt !important;
+    font-size: 12pt !important;
+    background: white !important;
+    color: black !important;
+    text-align: center !important;
+  }
+
+  /* Remove borders/backgrounds from input fields for print */
+  input[type="text"],
+  input[type="number"] {
+    border: none !important;
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    font-size: 13pt !important;
+  }
+
+  /* Footer for print */
+  .pvessai-printable-footer {
+    margin-top: 4pt !important;
+    font-size: 10pt !important;
+    color: black !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .pvessai-printable-footer hr {
+    border-color: black !important;
+    border-width: 1.3pt !important;
+    margin: 4pt 0 !important;
+  }
+
+  /* Ensure proper spacing and readability */
+  .pvessai-printable-table-section:last-of-type {
+    margin-bottom: 0 !important;
+  }
+
+  /* Allow original colors for all printable content */
+  .pvessai-printable-container,
+  .pvessai-printable-container * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    /* Do not force color: black here */
+  }
+
+  /* Specific styles for each table type to ensure they use their own CSS */
+  .pvessai-printable-table.voltage-ratio-table,
+  .pvessai-printable-table.dielectric-test-table,
+  .pvessai-printable-table.short-circuit-test-table {
+    /* Use the individual table CSS files for styling */
+    border: 1pt solid #000 !important;
+  }
+
+  .pvessai-printable-table.voltage-ratio-table th,
+  .pvessai-printable-table.voltage-ratio-table td,
+  .pvessai-printable-table.dielectric-test-table th,
+  .pvessai-printable-table.dielectric-test-table td,
+  .pvessai-printable-table.short-circuit-test-table th,
+  .pvessai-printable-table.short-circuit-test-table td {
+    /* Use the individual table CSS files for styling */
+    border: 1pt solid #000 !important;
+    background: white !important;
+    color: black !important;
+  }
+
+  .pvessai-printable-table.voltage-ratio-table th,
+  .pvessai-printable-table.dielectric-test-table th,
+  .pvessai-printable-table.short-circuit-test-table th {
+    /* Use the individual table CSS files for styling */
+    background: #f3f6fa !important;
+    color: #2a3b8f !important;
+  }
+
+  .pvessai-printable-table.voltage-ratio-table .biphase-header-row th {
+    background: #f3f6fa !important;
+    color: #2a3b8f !important;
+  }
+
+  /* Input fields for print */
+  .pvessai-voltage-input,
+  .pvessai-dielectric-input,
+  .pvessai-shortcircuit-input {
+    width: 100% !important;
+    padding: 2px 3px !important;
+    font-size: 12pt !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: none !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hide conclusion column in print - REMOVED to allow React-driven conditional visibility
+  .voltage-ratio-table tr:not(.biphase-header-row) th:last-child,
+  .voltage-ratio-table td:last-child,
+  .no-load-test-table th:last-child,
+  .no-load-test-table td:last-child,
+  .short-circuit-test-table th:last-child,
+  .short-circuit-test-table td:last-child,
+  .dielectric-test-table th:last-child,
+  .dielectric-test-table td:last-child {
+    display: none;
+  }
+  */
+
+  .resistance-table th {
+    border: 1px solid black;
+  }
+
+  .pvessai-printable-container:not(.bitention-case) {
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  .pvessai-printable-container:not(.bitention-case) .pvessai-printable-divider,
+  .pvessai-printable-container:not(.bitention-case) .pvessai-printable-table-section,
+  .pvessai-printable-container:not(.bitention-case) .pvessai-printable-table,
+  .pvessai-printable-container:not(.bitention-case) .signature-section,
+  .pvessai-printable-container:not(.bitention-case) .pvessai-printable-footer {
+    page-break-inside: avoid !important;
+  }
+
+  .client-textarea-print {
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    resize: none !important;
+    padding: 0 !important;
+    font-size: 13pt !important;
+  }
+
+  /* Strong visible separator for Resistance table header (print only).
+     This targets header rows and the first data row to ensure a clear horizontal
+     line in print preview without modifying non-print styles. */
+  .pvessai-printable-table.resistance-table thead th,
+  .pvessai-printable-table.resistance-table tr:first-of-type th,
+  .pvessai-printable-table.resistance.table tr:nth-of-type(1) th {
+    border-bottom: 2pt solid #333 !important;
+    /* orange separator */
+  }
+
+  /* Also ensure the first data row shows a matching top border so the line is
+     visible even if browsers collapse adjoining borders differently. */
+  .pvessai-printable-table.resistance-table tbody tr:first-of-type td,
+  .pvessai-printable-table.resistance-table tr:nth-of-type(2) td {
+    border-top: 2pt solid #333 !important;
+  }
+}

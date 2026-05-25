@@ -1,0 +1,164 @@
+/* Add visible outer border for screen view */
+.pvessai-printable-table.no-load-test-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 6px 32px 0 rgba(30,34,90,0.13), 0 1.5px 6px 0 rgba(30,34,90,0.08);
+  table-layout: fixed;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pvessai-printable-table.no-load-test-table th,
+.pvessai-printable-table.no-load-test-table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 0.95rem;
+  width: auto !important;
+  min-width: 60px !important;
+  max-width: 120px !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  box-sizing: border-box !important;
+}
+
+/* Remove double border on the outer edge */
+.pvessai-printable-table.no-load-test-table th:first-child,
+.pvessai-printable-table.no-load-test-table td:first-child {
+  border-left: none;
+}
+.pvessai-printable-table.no-load-test-table th:last-child,
+.pvessai-printable-table.no-load-test-table td:last-child {
+  border-right: none;
+}
+.pvessai-printable-table.no-load-test-table tr:first-child th {
+  border-top: none;
+}
+.pvessai-printable-table.no-load-test-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pvessai-printable-input {
+  /* Make inputs fill their table cell but respect padding via box-sizing */
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 0.97rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  background: #fafafa;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.narrow-input {
+  width: 120px !important;
+  max-width: 120px !important;
+  min-width: 40px !important;
+}
+
+/* Ensure input elements inside table cells don't overflow the cell */
+.pvessai-printable-table.no-load-test-table td input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 8px;
+}
+
+.pvessai-printable-table.no-load-test-table th {
+  background: #f3f6fa;
+  font-weight: 600;
+  color: #2a3b8f;
+}
+
+/* Specific styling for Conclusion column */
+.pvessai-printable-table.no-load-test-table th:last-child,
+.pvessai-printable-table.no-load-test-table td:last-child {
+  width: 150px !important;
+  min-width: 120px !important;
+  max-width: 200px !important;
+}
+
+/* Print-specific styles */
+@media print {
+  .pvessai-printable-table-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .pvessai-printable-table.no-load-test-table {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+  }
+  @page {
+    margin: 0.5cm !important;
+  }
+  .pvessai-printable-table.no-load-test-table th,
+  .pvessai-printable-table.no-load-test-table td {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-all !important;
+    padding: 2pt 3pt !important;
+  }
+
+  .pvessai-printable-table.no-load-test-table th {
+    font-size: 24pt !important;
+    font-weight: 600 !important;
+    color: #2a3b8f !important;
+  }
+
+  .pvessai-printable-table.no-load-test-table td input {
+    font-size: 13pt !important;
+  }
+  
+  .pvessai-printable-table.no-load-test-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    table-layout: fixed !important;
+    border: 1px solid #333 !important;
+  }
+  
+  .pvessai-printable-table.no-load-test-table th {
+    background: #f3f6fa !important;
+    font-weight: 600 !important;
+    color: #2a3b8f !important;
+    border: 1px solid #333 !important;
+    padding: 4px 3px !important;
+    text-align: center !important;
+  }
+  
+  .pvessai-printable-table.no-load-test-table td {
+    border: 1px solid #333 !important;
+    padding: 4px 3px !important;
+    text-align: center !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+}
+
+/* Responsive styles for different screen sizes */
+@media (max-width: 768px) {
+  .pvessai-printable-table.no-load-test-table th,
+  .pvessai-printable-table.no-load-test-table td {
+    min-width: 50px !important;
+    max-width: 80px !important;
+    font-size: 0.8rem !important;
+    padding: 4px 5px !important;
+  }
+}
+
+/* Ensure table fits within container */
+.pvessai-printable-table-section {
+  overflow-x: auto !important;
+  max-width: 100% !important;
+}

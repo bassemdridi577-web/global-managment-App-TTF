@@ -1,0 +1,250 @@
+/* Keep Liste des PV button in main dashboard section, not fixed */
+.dashboard-list-btn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 30%;
+}
+
+.dashboard-list-btn button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #23286b;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.dashboard-container {
+    background-color: #f0f2f5;
+    /* Light gray background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 700px;
+    /* Max width for a single chart container */
+    height: 550px;
+    /* Fixed height */
+    text-align: center;
+    transition: height 0.3s ease;
+}
+
+.dashboard-container.tall {
+    height: 750px;
+}
+
+.dashboard-charts-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+    /* Allow charts to wrap on smaller screens */
+    padding: 20px;
+}
+
+.charts-area {
+    width: 100%;
+    overflow-y: auto;
+    max-height: calc(100vh - 150px);
+    /* Adjust as needed */
+}
+
+.chart-container {
+    width: 100%;
+    height: 100%;
+}
+
+.page-title {
+    font-size: 2.5em;
+    /* Make it larger */
+    color: #333;
+    /* Darker color */
+    margin-bottom: 10px;
+    /* Add some space below it */
+    text-align: left;
+}
+
+.title-left-align {
+    text-align: center;
+    align-self: center;
+}
+
+.center-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Take full viewport height */
+    width: 100vw;
+    /* Take full viewport width */
+    font-size: 1.5em;
+    color: #555;
+}
+
+.control-panel-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.dashboard-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.dashboard-controls select,
+.dashboard-controls button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+.dashboard-controls button {
+    background-color: #23286b;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 24px;
+}
+
+.top-controls-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+}
+
+/* The filter bar itself should no longer be a full-width centered container */
+.filter-bar {
+    display: flex;
+    justify-content: flex-start;
+    /* Align filters to the left */
+    padding: 0;
+    width: auto;
+}
+
+.dashboard-list-btn button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2c3e50;
+    /* A different color to distinguish */
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dashboard-list-btn button:hover {
+    background-color: #34495e;
+}
+
+/* New Styles for Professional Filter Bar */
+.filter-bar-content {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    /* Increased gap for better spacing */
+    padding: 16px 24px;
+    background-color: var(--theme-background-secondary, #ffffff);
+    border: 1px solid var(--theme-border-color, #e0e0e0);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    /* Allow filters to wrap on smaller screens */
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group> :last-child {
+    margin-top: auto;
+}
+
+.filter-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--theme-text-color-secondary, #555);
+    text-align: left;
+}
+
+.filter-group input[type='date'],
+.filter-group select {
+    padding: 8px 12px;
+    border: 1px solid var(--theme-border-color, #ccc);
+    border-radius: 8px;
+    background-color: var(--theme-background-color, #fff);
+    color: var(--theme-text-color, #333);
+    font-size: 14px;
+    min-width: 150px;
+    /* Ensure inputs have a decent width */
+}
+
+.filter-bar button {
+    /* align-self: flex-end; removed */
+    padding: 8px 20px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: #23286b;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filter-bar button:disabled {
+    background-color: #a9a9a9;
+    cursor: not-allowed;
+}
+
+.filter-bar button:hover:not(:disabled) {
+    background-color: #3a42a0;
+}
+
+/* Legend improvements */
+.recharts-legend-item {
+    margin-bottom: 8px !important;
+}
+
+.recharts-legend-item-text {
+    font-size: 13px;
+    color: #444;
+}
+
+.invisible-label {
+    visibility: hidden;
+}

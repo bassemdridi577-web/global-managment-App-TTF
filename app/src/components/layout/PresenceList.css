@@ -1,0 +1,163 @@
+/* PresenceList.css */
+.presence-list {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    width: 320px;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    animation: slideUpFade 0.3s ease-out;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.presence-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #1c2056 0%, #23286b 100%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.presence-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.online-count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.presence-items {
+    padding: 10px 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.presence-items::-webkit-scrollbar {
+    width: 6px;
+}
+
+.presence-items::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.presence-items::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.presence-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border-left: 3px solid transparent;
+}
+
+.presence-item:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-left-color: #d80000ff;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: #f0f2f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #1c2056;
+    position: relative;
+    margin-right: 15px;
+    flex-shrink: 0;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #ccc;
+}
+
+.presence-item.online .status-indicator {
+    background-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.presence-item.online .user-avatar {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.user-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-lab {
+    font-size: 12px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.last-seen {
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.presence-item.online .last-seen {
+    color: #4caf50;
+}
+
+.presence-empty {
+    padding: 40px 20px;
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+}

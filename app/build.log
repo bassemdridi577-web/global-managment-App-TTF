@@ -1,0 +1,115 @@
+
+> app@0.1.0 build
+> react-scripts build
+
+(node:10252) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Creating an optimized production build...
+Compiled with warnings.
+
+[eslint] 
+src\components\Dashboard\Dashboard.jsx
+  Line 2:8:    'DateFilter' is defined but never used                                                                        no-unused-vars
+  Line 11:9:   'navigate' is assigned a value but never used                                                                 no-unused-vars
+  Line 23:10:  'selectedPvs' is assigned a value but never used                                                              no-unused-vars
+  Line 23:23:  'setSelectedPvs' is assigned a value but never used                                                           no-unused-vars
+  Line 72:6:   React Hook useEffect has a missing dependency: 'fetchList'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\Dashboard\VisuelPage.jsx
+  Line 50:6:  React Hook useEffect has a missing dependency: 'fetchPvData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\Dashboard\chart2.jsx
+  Line 64:19:  'formatNumberNoExp' is assigned a value but never used  no-unused-vars
+
+src\components\Dashboard\table.jsx
+  Line 4:10:   'useSession' is defined but never used                         no-unused-vars
+  Line 166:9:  'renderVoltageRatioSimple' is assigned a value but never used  no-unused-vars
+  Line 178:9:  'renderNoLoadTestSimple' is assigned a value but never used    no-unused-vars
+  Line 194:9:  'renderShortCircuitSimple' is assigned a value but never used  no-unused-vars
+  Line 200:9:  'renderDielectricSimple' is assigned a value but never used    no-unused-vars
+  Line 219:9:  'renderResistanceSimple' is assigned a value but never used    no-unused-vars
+
+src\components\admin\UserManagement.jsx
+  Line 4:8:  'axios' is defined but never used  no-unused-vars
+
+src\components\ajouttransformateur\PvEssaiContent.jsx
+  Line 1:26:  'useEffect' is defined but never used         no-unused-vars
+  Line 46:3:  'rhtA75c' is assigned a value but never used  no-unused-vars
+
+src\components\ajouttransformateur\PvEssaiContent2.jsx
+  Line 1:17:  'useState' is defined but never used   no-unused-vars
+  Line 1:27:  'useEffect' is defined but never used  no-unused-vars
+
+src\components\ajouttransformateur\PvEssaiPrintable.jsx
+  Line 1:27:   'useEffect' is defined but never used                            no-unused-vars
+  Line 11:10:  'showClientSignature' is assigned a value but never used         no-unused-vars
+  Line 11:31:  'setShowClientSignature' is assigned a value but never used      no-unused-vars
+  Line 12:10:  'showControleurSignature' is assigned a value but never used     no-unused-vars
+  Line 12:35:  'setShowControleurSignature' is assigned a value but never used  no-unused-vars
+  Line 13:10:  'showDirectionSignature' is assigned a value but never used      no-unused-vars
+  Line 13:34:  'setShowDirectionSignature' is assigned a value but never used   no-unused-vars
+
+src\components\ajouttransformateur\ajouttransformateurform.jsx
+  Line 82:6:  React Hook useEffect has a missing dependency: 'form'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\ajouttransformateur\calcul.js
+  Line 218:1:  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+src\components\ajouttransformateur\pvenglai.jsx
+  Line 51:3:  Duplicate key 'Fréquence'  no-dupe-keys
+
+src\components\ajouttransformateur\tableau\DielectricTestTable.js
+  Line 73:6:  React Hook useEffect has a missing dependency: 'fields.spires.temps'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\ajouttransformateur\tableau\ShortCircuitTestTable.js
+  Line 60:6:  React Hook React.useCallback has a missing dependency: 'row'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\ajouttransformateur\tableau\VoltageRatioTable.js
+  Line 138:6:  React Hook useEffect has missing dependencies: 'conclusionData', 'isConforme', and 'setConclusionData'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\ajouttransformateur\usePvEssaiData.js
+  Line 1:10:   'useMemo' is defined but never used                        no-unused-vars
+  Line 27:48:  'initialMeasuredState' is assigned a value but never used  no-unused-vars
+
+src\components\calcul75\calcul75mono.jsx
+  Line 1:8:  'React' is defined but never used  no-unused-vars
+
+src\components\calcul75\calcul75tester2.jsx
+  Line 2:8:    'Calcul75triphasé' is defined but never used                                                                      no-unused-vars
+  Line 205:6:  React Hook useEffect has a missing dependency: 'resultValues2'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+src\components\commande\CommandeForm.js
+  Line 79:43:  'saving' is assigned a value but never used     no-unused-vars
+  Line 79:58:  'saveError' is assigned a value but never used  no-unused-vars
+
+src\components\fiche\FichesIndividuelles.jsx
+  Line 10:9:  'handlePrint' is assigned a value but never used  no-unused-vars
+
+src\components\fiche\FichesIndividuellesTriphase.jsx
+  Line 10:9:  'handlePrint' is assigned a value but never used  no-unused-vars
+
+src\components\mainforms\acceuil.jsx
+  Line 30:17:  Missing '()' invoking a constructor  new-parens
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  284.93 kB  build\static\js\main.e21eb58c.js
+  13.43 kB   build\static\css\main.af4b49a7.css
+  1.76 kB    build\static\js\453.c02bb138.chunk.js
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  npm install -g serve
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+

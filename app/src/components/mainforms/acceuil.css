@@ -1,0 +1,540 @@
+/* Modern Acceuil Page Styles */
+.acceuil-container {
+    min-height: calc(100vh - 70px);
+    width: 100%;
+    background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 50%, #f0f2ff 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Animated background decorations */
+.acceuil-bg-decoration {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: float 20s ease-in-out infinite;
+}
+
+.acceuil-bg-decoration-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(59, 76, 202, 0.15) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    animation-delay: 0s;
+}
+
+.acceuil-bg-decoration-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(42, 59, 168, 0.12) 0%, transparent 70%);
+    bottom: -50px;
+    left: -50px;
+    animation-delay: 7s;
+}
+
+.acceuil-bg-decoration-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(30, 40, 117, 0.1) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 14s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+}
+
+.acceuil-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 1400px;
+    width: 100%;
+    gap: 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.acceuil-logo-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.acceuil-logo-wrapper {
+    position: relative;
+    animation: slideInLeft 0.8s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.acceuil-logo {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 30px rgba(30, 34, 90, 0.15));
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.acceuil-form-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    animation: slideInRight 0.8s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.acceuil-welcome-text {
+    margin-bottom: 32px;
+}
+
+.acceuil-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #1e2875;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.acceuil-title-highlight {
+    background: linear-gradient(135deg, #2a3ba8 0%, #3b4cca 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.acceuil-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+    font-weight: 500;
+    margin-top: 8px;
+    letter-spacing: 0.3px;
+}
+
+.acceuil-user-greeting {
+    font-size: 1.4rem;
+    color: #1e2875;
+    font-weight: 600;
+    margin-top: 12px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.acceuil-auth-container {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow:
+        0 20px 60px rgba(30, 34, 90, 0.12),
+        0 8px 24px rgba(30, 34, 90, 0.08);
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.acceuil-section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e2875;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.acceuil-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.acceuil-btn {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: none;
+    letter-spacing: 0.3px;
+}
+
+.acceuil-btn-primary {
+    background: linear-gradient(135deg, #2a3ba8 0%, #3b4cca 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(59, 76, 202, 0.3);
+}
+
+.acceuil-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 76, 202, 0.4);
+}
+
+.acceuil-btn-primary:active {
+    transform: translateY(0);
+}
+
+.acceuil-btn-secondary {
+    background: #ffffff;
+    color: #1e2875;
+    border: 2px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.acceuil-btn-secondary:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.acceuil-btn-icon {
+    font-size: 1.2rem;
+}
+
+.acceuil-divider {
+    text-align: center;
+    position: relative;
+    margin: 8px 0;
+}
+
+.acceuil-divider span {
+    background: #ffffff;
+    padding: 0 12px;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.acceuil-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.acceuil-terms {
+    font-size: 0.85rem;
+    color: #6b7280;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.acceuil-link {
+    color: #2a3ba8;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.acceuil-link:hover {
+    color: #1e2875;
+    text-decoration: underline;
+}
+
+/* Features section for authenticated users */
+.acceuil-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.acceuil-feature-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(30, 34, 90, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.acceuil-feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(30, 34, 90, 0.12);
+}
+
+.acceuil-feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.acceuil-feature-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e2875;
+    margin-bottom: 6px;
+}
+
+.acceuil-feature-desc {
+    font-size: 0.8rem;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+/* Support section */
+.acceuil-support {
+    background: linear-gradient(135deg, #f0f2ff 0%, #e8ecff 100%);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 2px solid #e5e7eb;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.acceuil-support-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.acceuil-support-content {
+    flex: 1;
+}
+
+.acceuil-support-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e2875;
+    margin-bottom: 4px;
+}
+
+.acceuil-support-text {
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+.acceuil-support-email {
+    color: #2a3ba8;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.acceuil-support-email:hover {
+    background: #ffffff;
+    color: #1e2875;
+    text-decoration: underline;
+}
+
+/* Footer */
+.acceuil-footer {
+    width: 100%;
+    background: linear-gradient(135deg, #0a0a23 0%, #1a1a3a 100%);
+    color: #ffffff;
+    padding: 32px 20px;
+    margin-top: auto;
+}
+
+.acceuil-footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.acceuil-footer-copyright {
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    opacity: 0.9;
+}
+
+.acceuil-footer-social {
+    display: flex;
+    gap: 16px;
+}
+
+.acceuil-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+.acceuil-social-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 968px) {
+    .acceuil-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .acceuil-logo {
+        width: 220px;
+        height: 220px;
+    }
+
+    .acceuil-title {
+        font-size: 2rem;
+    }
+
+    .acceuil-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .acceuil-container {
+        padding: 60px 16px 32px 16px;
+    }
+
+    .acceuil-logo {
+        width: 180px;
+        height: 180px;
+    }
+
+    .acceuil-title {
+        font-size: 1.75rem;
+    }
+
+    .acceuil-auth-container {
+        padding: 24px;
+    }
+
+    .acceuil-btn {
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+
+    .acceuil-support {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .acceuil-footer-content {
+        gap: 16px;
+    }
+
+    .acceuil-footer-copyright {
+        font-size: 0.85rem;
+        text-align: center;
+    }
+}

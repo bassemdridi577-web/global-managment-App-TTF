@@ -1,0 +1,149 @@
+/* Container styles */
+.pvessai-printable-table-section {
+  margin-bottom: 16px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+.pvessai-printable-table-title {
+  font-weight: 600;
+  color: #2a3b8f;
+  background: #f3f6fa;
+  font-size: 1.08rem;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  margin: 0;
+}
+
+/* Table styles */
+.pvessai-printable-table.dielectric-test-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  table-layout: fixed;
+  border: 2px solid #2a3b8f;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pvessai-printable-table.dielectric-test-table th,
+.pvessai-printable-table.dielectric-test-table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 10pt;
+}
+
+/* Remove double border on the outer edge */
+.pvessai-printable-table.dielectric-test-table th:first-child,
+.pvessai-printable-table.dielectric-test-table td:first-child {
+  border-left: none;
+}
+.pvessai-printable-table.dielectric-test-table th:last-child,
+.pvessai-printable-table.dielectric-test-table td:last-child {
+  border-right: none;
+}
+.pvessai-printable-table.dielectric-test-table tr:first-child th {
+  border-top: none;
+}
+.pvessai-printable-table.dielectric-test-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pvessai-printable-table.dielectric-test-table th {
+  background: #f3f6fa;
+  font-weight: 600;
+  color: #2a3b8f;
+}
+
+/* Input styles */
+.pvessai-dielectric-input {
+  width: 90%;
+  padding: 4px 6px;
+  font-size: 0.97rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  background: #fafafa;
+  text-align: center;
+}
+
+/* First column (Designations) should be left-aligned */
+.pvessai-printable-table.dielectric-test-table th:first-child,
+.pvessai-printable-table.dielectric-test-table td:first-child {
+  text-align: left !important;
+}
+
+/* Ensure inputs are centered in their cells */
+.pvessai-printable-table.dielectric-test-table input.pvessai-dielectric-input {
+  display: block !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+}
+
+/* Print-specific styles */
+@media print {
+  .pvessai-printable-table-section {
+    background: #fff !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin-bottom: 8px !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .pvessai-printable-table-title {
+    font-weight: 600 !important;
+    color: #2a3b8f !important;
+    background: #f3f6fa !important;
+    font-size: 1.08rem !important;
+    padding: 8px 12px !important;
+    border: 1px solid #e0e0e0 !important;
+    border-bottom: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .pvessai-printable-table.dielectric-test-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    table-layout: fixed !important;
+  border: 0.5pt solid #888 !important;
+  outline: 1pt solid #888 !important;
+  }
+  
+  .pvessai-printable-table.dielectric-test-table th,
+  .pvessai-printable-table.dielectric-test-table td {
+    border: 1px solid #333 !important;
+    padding: 2pt 3pt !important;
+    text-align: center !important;
+    font-size: 13pt !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  
+  .pvessai-printable-table.dielectric-test-table th {
+    background: #f3f6fa !important;
+    font-weight: 600 !important;
+    color: #2a3b8f !important;
+    font-size: 14pt !important;
+  }
+  
+  .pvessai-dielectric-input {
+    width: 100% !important;
+    padding: 2px 3px !important;
+    font-size: 13pt !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: none !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+}

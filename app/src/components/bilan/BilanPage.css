@@ -1,0 +1,323 @@
+.bilan-container {
+    padding: 20px;
+    min-height: calc(100vh - 80px);
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+.bilan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.bilan-title {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bilan-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+.bilan-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    background: #edf2f7;
+    color: #4a5568;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bilan-tab.active {
+    background: #3182ce;
+    color: white;
+}
+
+.bilan-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.bilan-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-size: 0.9rem;
+}
+
+.btn-load {
+    background-color: #9b59b6;
+    color: white;
+}
+
+.btn-export {
+    background-color: #27ae60;
+    color: white;
+}
+
+.bilan-content {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cartouche styling */
+.cartouche-container {
+    margin-top: 50px;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    border: 2px solid #000;
+    background-color: #fff;
+}
+
+.cartouche-container td {
+    border: 1px solid #000;
+    padding: 6px 8px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cartouche-header-company {
+    font-size: 24px !important;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.cartouche-header-address {
+    font-size: 13px !important;
+    background-color: #f9fafb;
+}
+
+.cartouche-label-cell {
+    font-weight: bold;
+    background-color: #f1f3f5;
+    text-align: left !important;
+}
+
+.cartouche-title-header {
+    font-weight: bold;
+    background-color: #e9ecef;
+}
+
+.cartouche-execution-cell {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.cartouche-small-label {
+    font-weight: bold;
+    background-color: #f1f3f5;
+}
+
+/* Other Bilan Specific Styles */
+/* Bilan Grid Layout */
+.bilan-grid, .bilan-grid-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.bilan-full-width {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.bilan-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef2f6;
+    overflow: hidden;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+.bilan-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+    background: white;
+    padding: 18px 24px;
+    font-weight: 800;
+    color: #2b6cb0;
+    border-bottom: 1px solid #edf2f7;
+    margin: 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: #3182ce;
+    border-radius: 0 4px 4px 0;
+}
+
+.bilan-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.label-cell {
+    padding: 12px 24px;
+    background-color: #fafbfc;
+    color: #4a5568;
+    font-weight: 600;
+    width: 48%;
+    border-bottom: 1px solid #f1f5f9;
+    border-right: 1px solid #f1f5f9;
+    font-size: 0.85rem;
+}
+
+.value-cell {
+    padding: 12px 24px;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 1rem;
+    color: #2d3748;
+}
+
+.unit-cell {
+    padding: 12px 24px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    width: 80px;
+    border-bottom: 1px solid #f1f5f9;
+    background-color: #fcfdfe;
+    font-weight: 600;
+}
+
+.calculated-cell {
+    color: #3182ce !important;
+    background-color: #f0f7ff;
+}
+
+.input-cell {
+    color: #4a5568;
+}
+
+.result-cell {
+    text-align: center;
+    padding: 20px !important;
+    font-size: 1.1rem !important;
+    background-color: #f8fafc;
+}
+
+@media (max-width: 1300px) {
+    .bilan-grid, .bilan-grid-bottom {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* -------------------------------------
+   CM-4C Tab Specific Box Styles
+   ------------------------------------- */
+
+.bilan-display-box {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 14px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.bilan-display-box:hover {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+.bilan-display-box label {
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.bilan-display-box .divider {
+    display: none; /* Spacing manages the layout */
+}
+
+.bilan-display-box .value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1e293b;
+    word-break: break-word; /* Ensure large numbers don't break layout */
+}
+
+.bilan-extra-display-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    border-left: 4px solid #3182ce;
+    transition: all 0.2s ease;
+}
+
+.bilan-extra-display-box:hover {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    border-left-color: #2b6cb0;
+}
+
+.bilan-extra-display-box label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin: 0;
+}
+
+.bilan-extra-display-box .value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+}

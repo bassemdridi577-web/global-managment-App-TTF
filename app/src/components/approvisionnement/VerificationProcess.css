@@ -1,0 +1,243 @@
+.verification-container {
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f5f9;
+}
+
+.verification-container h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+
+.verification-steps {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.verification-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 25px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.verification-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-text {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.step-text strong {
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.status-container {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.status-icon.loading {
+  aspect-ratio: 1 / 1;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  border: 3px solid #f3f3f3;
+  /* Light grey */
+  border-top: 3px solid #3498db;
+  /* Blue */
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite;
+  box-sizing: border-box !important;
+  display: block !important;
+  margin: auto;
+  /* Center in flex container */
+  line-height: 0 !important;
+  font-size: 0 !important;
+  padding: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+.status-icon.success {
+  background-color: #10b981;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+}
+
+.status-icon.failure {
+  background-color: #ef4444;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+}
+
+.conclusion-container {
+  margin-top: 50px;
+  padding: 40px;
+  background-color: #f8fafc;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.conclusion-container h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.conclusion-container h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 15px;
+}
+
+.conclusion-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.conclusion-container li {
+  margin-bottom: 10px;
+}
+
+.article-summary-item {
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.article-summary-item:hover {
+  transform: scale(1.02);
+}
+
+.article-summary-item.possible {
+  border-left: 5px solid #10b981;
+}
+
+.article-summary-item.not-possible {
+  border-left: 5px solid #ef4444;
+}
+
+.return-button {
+  margin-top: 40px;
+  background: #1e293b;
+  color: white;
+  padding: 14px 40px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.return-button:hover {
+  background: #0f172a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.per-transformer-summaries-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .verification-container {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .verification-container h3 {
+    font-size: 1.3rem;
+  }
+
+  .verification-step {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .step-text {
+    font-size: 0.9rem;
+  }
+
+  .conclusion-container {
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  .per-transformer-summaries-container {
+    grid-template-columns: 1fr;
+  }
+
+  .return-button {
+    width: 100%;
+    padding: 12px;
+  }
+}

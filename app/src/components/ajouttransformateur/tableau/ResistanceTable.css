@@ -1,0 +1,168 @@
+@media print {
+
+  /* Strong bottom border under header row for biphasé resistance tables in print */
+  .pvessai-printable-table.resistance-table tr:first-child th {
+    border-bottom: 1px solid #000 !important;
+    box-shadow: none !important;
+  }
+}
+
+@media print {
+
+  /* Always enforce top border for the second header row (A-B, A-C, etc.) in resistance tables (print) */
+  .pvessai-printable-table.resistance-table tr:nth-child(2) th {
+    border-top: 2px solid #333 !important;
+    box-shadow: 0 -3px 0 #333 !important;
+  }
+
+  /* Guarantee top and bottom border for first resistance table in bitention case */
+
+
+  /* Always enforce top border for first header row in resistance table (print) */
+
+  .resistance-unit-select-header {
+    display: none !important;
+  }
+}
+
+/* ResistanceTable - Standardized styling */
+
+/* Table layout */
+.pvessai-printable-table.resistance-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  table-layout: fixed;
+  border: 2px solid #2a3b8f;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pvessai-printable-table.resistance-table th,
+.pvessai-printable-table.resistance-table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Remove double border on the outer edge */
+.pvessai-printable-table.resistance-table th:first-child,
+.pvessai-printable-table.resistance-table td:first-child {
+  border-left: none;
+}
+
+.pvessai-printable-table.resistance-table th:last-child,
+.pvessai-printable-table.resistance-table td:last-child {
+  border-right: none;
+}
+
+/* Remove border-top: none; Always enforce top border in print */
+.pvessai-printable-table.resistance-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pvessai-printable-table.resistance-table th,
+.pvessai-printable-table.resistance-table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 6px;
+  text-align: center;
+  font-size: 0.95rem;
+  width: auto !important;
+  min-width: 60px !important;
+  max-width: 120px !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  box-sizing: border-box !important;
+}
+
+.pvessai-printable-table.resistance-table th {
+  background: #f3f6fa;
+  font-weight: 600;
+  color: #2a3b8f;
+}
+
+/* Input styling - using standardized input styles */
+.pvessai-resistance-input {
+  width: 90%;
+  padding: 4px 6px;
+  font-size: 0.97rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.resistance-table-wrapper {
+  position: relative;
+}
+
+.resistance-unit-select-header {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  color: #2a3b8f;
+}
+
+/* Print-specific styles */
+@media print {
+  .pvessai-printable-table.resistance-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    table-layout: fixed !important;
+    border: 0.5pt solid #888 !important;
+    outline: 1pt solid #888 !important;
+  }
+
+  .pvessai-printable-table.resistance-table th {
+    background: #f3f6fa !important;
+    font-weight: 600 !important;
+    color: #2a3b8f !important;
+    border: 1px solid #333 !important;
+    padding: 2pt 3pt !important;
+    text-align: center !important;
+    font-size: 14pt !important;
+  }
+
+  .pvessai-printable-table.resistance-table td {
+    border: 1px solid #333 !important;
+    padding: 2pt 3pt !important;
+    text-align: center !important;
+    font-size: 13pt !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  /* Print styles for inputs */
+  .pvessai-resistance-input {
+    width: 100% !important;
+    padding: 2px 3px !important;
+    font-size: 13pt !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: none !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure vertical border between Résistance MT (Ω) and Résistance BT (Ω) in header row */
+  /* Strong vertical border between Résistance MT (Ω) and Résistance BT (Ω) in header row (print) */
+  .pvessai-printable-table.resistance-table tr:first-child th:not(:last-child) {
+    border-right: 3px solid #000000 !important;
+    box-shadow: 3px 0 0 #000000 !important;
+  }
+
+  .pvessai-printable-table.resistance-table tr:first-child th:last-child {
+    border-right: none !important;
+    box-shadow: none !important;
+  }
+}

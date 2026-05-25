@@ -1,0 +1,11 @@
+.no-pv-data-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Take full viewport height */
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in height calculation */
+}

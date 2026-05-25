@@ -1,0 +1,128 @@
+/* Bobinage Table Wrapper - Ensures table stays within container */
+.bobinage-unified-table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+    /* Fallback for very small screens */
+}
+
+.bobinage-unified-table .control-table {
+    width: 100%;
+    table-layout: fixed;
+    /* Enforce column widths */
+}
+
+/* General Cell Styling */
+.bobinage-unified-table th,
+.bobinage-unified-table td {
+    padding: 4px 2px;
+    font-size: 0.80rem;
+    border: 1px solid #e5e7eb;
+    word-wrap: break-word;
+    vertical-align: middle;
+}
+
+/* Header Styling */
+.bobinage-unified-table thead th {
+    white-space: normal;
+    line-height: 1.2;
+    padding: 6px 2px;
+    text-align: center;
+}
+
+/* Column Width Configuration (Total ~100%) */
+
+/* 1. Label Column (First row, first cell) */
+.bobinage-unified-table thead tr:first-child th:first-child {
+    width: 10%;
+}
+
+/* 2. Data Columns (BT1-3, MT1-3) - Defined in 2nd row */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(1),
+/* BT1 */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(2),
+/* BT2 */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(3),
+/* BT3 */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(6),
+/* MT1 */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(7),
+/* MT2 */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(8)
+
+/* MT3 */
+    {
+    width: 10%;
+}
+
+/* 3. Prévue Columns */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(4),
+/* BT Prévue */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(9)
+
+/* MT Prévue */
+    {
+    width: 7%;
+}
+
+/* 4. CNC Columns */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(5),
+/* BT CNC */
+.bobinage-unified-table thead tr:nth-child(2) th:nth-child(10)
+
+/* MT CNC */
+    {
+    width: 8%;
+}
+
+/* Input Styling */
+.bobinage-unified-table input[type="text"],
+.bobinage-unified-table input[type="number"],
+.bobinage-unified-table input[type="date"],
+.bobinage-unified-table input[type="time"],
+.bobinage-unified-table select {
+    width: 100%;
+    padding: 2px 4px;
+    font-size: 0.80rem;
+    height: 28px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Header Inputs (Date/Time/Op) */
+.bobinage-unified-table .column-metadata {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100%;
+}
+
+.bobinage-unified-table .column-metadata label {
+    font-size: 0.7rem;
+    margin: 0;
+    color: #ffffff;
+    text-align: left;
+}
+
+.bobinage-unified-table .column-metadata input {
+    font-size: 0.85rem;
+    padding: 1px 2px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    color: #000;
+}
+
+.bobinage-unified-table .cnc-cell select {
+    font-size: 0.85rem;
+    padding: 0 2px;
+}
+
+/* Ensure label cell in body wraps text */
+.bobinage-unified-table .label-cell {
+    white-space: normal;
+    font-weight: 600;
+    text-align: left;
+}

@@ -1,0 +1,465 @@
+/* Dashboard styles */
+.dashboard {
+    padding: 20px;
+}
+
+.back-to-dashboard-btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    background: #23286b;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+body {
+    background-color: #f4f7f6;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.dashboard-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center children */
+    padding: 32px;
+    box-sizing: border-box;
+}
+
+.dashboard-header {
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Container for date filter dropdown to appear anchored to the header actions */
+/* keep default flow positioning for .dashboard-actions (no explicit rule) */
+
+/* Render the date filter in-flow so it pushes the content down (prevents overlaying the table) */
+.date-filter-dropdown {
+    position: relative;
+    top: 0;
+    right: auto;
+    z-index: 5;
+    min-width: 260px;
+    margin-left: 12px;
+}
+
+/* Ensure the table area has extra top padding to avoid overlap when the filter is visible */
+.dashboard-table-wrap {
+    padding-top: 24px;
+}
+
+.dashboard-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+}
+
+.table-controls-header {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 1600px;
+    /* Added max-width to match table */
+    padding: 16px 0;
+    margin: 0 auto;
+}
+
+
+.dashboard-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dashboard-table-wrap {
+    width: 100%;
+    max-width: 1600px;
+    /* constrain table width and center it */
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eaefee;
+    text-align: left;
+    white-space: normal;
+    /* allow wrapping to reduce width */
+}
+
+.dashboard-table th {
+    background: #f7f9fa;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-top: 1px solid #eaefee;
+    border-bottom: 2px solid #eaefee;
+    padding: 16px 14px;
+}
+
+.dashboard-table tbody tr {
+    background-color: #f8f8f8;
+    /* Light grey for all rows */
+}
+
+.dashboard-table tbody tr:hover {
+    background-color: #e0e0e0;
+    /* Slightly darker grey on hover */
+    cursor: pointer;
+}
+
+.dashboard-table tbody tr.selected {
+    background-color: #d0d0d0;
+    /* Even darker grey for selected */
+}
+
+/* Sticky columns */
+.dashboard-table .sticky-col {
+    position: -webkit-sticky;
+    position: sticky;
+    right: 0;
+    /* stick to the right edge */
+    z-index: 5;
+}
+
+/* Header sticky cell: match other th styles so the header looks consistent */
+.dashboard-table thead .sticky-col {
+    background: #f7f9fa;
+    /* same as other headers */
+    box-shadow: none;
+    /* no shadow on the header */
+}
+
+/* Body sticky cells: keep white background and subtle left shadow so they float above scroll */
+.dashboard-table tbody .sticky-col {
+    background: #f8f8f8;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.04);
+}
+
+.dashboard-table tbody tr:hover .sticky-col {
+    background-color: #e0e0e0;
+}
+
+.dashboard-table tbody tr.selected .sticky-col {
+    background-color: #d0d0d0;
+}
+
+
+.dashboard-footer {
+    width: 100%;
+    max-width: 1600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.dashboard-actions button {
+    background-color: #23286b;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-actions button:hover {
+    background-color: #1a1e5a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.print-pv-button {
+    background-color: #23286b !important;
+    color: white !important;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.print-pv-button:hover {
+    background-color: #002349 !important;
+}
+
+/* Improved consult button layout */
+.consult-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px !important;
+    min-width: 80px;
+    white-space: nowrap !important;
+    box-sizing: border-box;
+}
+
+.consult-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #0b1a52;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+}
+
+.consult-text {
+    display: inline-block;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Attestation button (green) */
+.attestation-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    /* match print-pv-button */
+    background: #23286b !important;
+    color: #fff !important;
+    border-radius: 5px;
+    /* match print-pv-button */
+    font-size: 14px;
+    /* match print-pv-button */
+    font-weight: 500;
+    /* match print-pv-button */
+    white-space: nowrap;
+    min-width: 110px;
+    box-sizing: border-box;
+}
+
+.attestation-btn:hover {
+    background: #002349 !important;
+}
+
+.fiche-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    /* match print-pv-button */
+    background: #23286b !important;
+    color: #fff !important;
+    border-radius: 5px;
+    /* match print-pv-button */
+    font-size: 14px;
+    /* match print-pv-button */
+    font-weight: 500;
+    /* match print-pv-button */
+    white-space: nowrap;
+    min-width: 110px;
+    box-sizing: border-box;
+}
+
+.fiche-btn:hover {
+    background: #002349 !important;
+}
+
+.details-btn {
+    background: #2b7be4;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.details-btn:hover {
+    background-color: #1a6ad9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Modal styles for PV details */
+.pv-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.pv-modal {
+    background: #fff;
+    width: min(1100px, 96%);
+    max-height: 92vh;
+    overflow: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: 18px;
+}
+
+.pv-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.pv-modal-subtitle {
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+.pv-id-badge {
+    position: absolute;
+    top: 20px;
+    right: 28px;
+    background: #23286b;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    z-index: 10000;
+}
+
+.pagination-button {
+    background-color: #23286b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pagination-button:hover {
+    background-color: #357abd;
+}
+
+.dashboard-loading,
+.dashboard-error {
+    margin: 8px 0;
+    color: #444;
+}
+
+/* (dropdown/expand feature removed) */
+
+@media (max-width: 640px) {
+    .dashboard-page {
+        padding: 16px;
+        align-items: flex-start;
+        /* Align children to the left on small screens */
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .dashboard-actions {
+        flex-direction: column;
+        width: 100%;
+        /* Ensure actions take full width */
+        gap: 8px;
+        /* Adjust gap for stacked items */
+    }
+
+    .dashboard-header,
+    .dashboard-table-wrap,
+    .dashboard-footer {
+        max-width: 100%;
+    }
+
+    .dashboard-table th,
+    .dashboard-table td {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    /* On narrow screens ensure the date filter uses full width and no floating shadow */
+    .date-filter-dropdown {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        margin-left: 0;
+    }
+}
+
+.disabled-link {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* New style for the Details button in charts */
+.details-chart-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background: #2b7be4;
+    /* Same as .details-btn */
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.details-chart-btn:hover {
+    background-color: #1a6ad9;
+    /* Same as .details-btn:hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}

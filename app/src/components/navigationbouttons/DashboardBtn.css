@@ -1,0 +1,59 @@
+.dashboard-btn-container {
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Ensure container takes full width for consistent button sizing */
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: #23286b; /* Dark background like sidebar */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 0 0 6px 6px; /* Consistent with nav-btn bottom radius, no top radius */
+  overflow: hidden;
+  left: 0; /* Align with parent button */
+  top: 100%; /* Position below the button */
+  /* Removed margin-top: 5px; */
+}
+
+.dropdown-item {
+  color: #e3e7fa; /* Light text color like nav-btn */
+  padding: 0.6rem 1.1rem; /* Slightly reduced top/bottom padding */
+  text-decoration: none;
+  display: block;
+  background: none; /* No background by default */
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1.08rem; /* Consistent font size */
+  font-weight: 500; /* Consistent font weight */
+  letter-spacing: 0.01em; /* Consistent letter spacing */
+  transition: background 0.18s, color 0.18s, font-weight 0.18s; /* Smooth transitions */
+  border-radius: 0; /* No border-radius for dropdown items */
+}
+
+.dropdown-item:hover, .dropdown-item.active {
+  background: #fff; /* White background on hover/active */
+  color: #e74c3c; /* Red text color on hover/active */
+  font-weight: bold; /* Bold font on hover/active */
+  border-left: 4px solid #e74c3c; /* Red left border */
+  box-shadow: 0 0 0 2px #e74c3c33; /* Red shadow */
+}
+
+.dropdown-arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 8px;
+  vertical-align: middle;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid #e3e7fa; /* Color of the arrow */
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(90deg); /* Rotate to point down */
+}

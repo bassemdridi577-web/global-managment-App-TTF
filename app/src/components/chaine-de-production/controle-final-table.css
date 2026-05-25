@@ -1,0 +1,251 @@
+/* Contrôle Final de Production - Modern Design */
+
+.rapport-section {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+/* Info Summary Section */
+.final-control-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f2ff 0%, #e5e7ff 100%);
+    border-radius: 12px;
+    border-left: 4px solid #2a3ba8;
+}
+
+.final-control-info .info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.final-control-info .info-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.final-control-info .info-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e2875;
+}
+
+/* Vertical Production Table */
+.production-table-vertical {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.production-table-vertical thead {
+    background: linear-gradient(135deg, #2a3ba8 0%, #1e2875 100%);
+}
+
+.production-table-vertical thead th {
+    padding: 16px 20px;
+    text-align: left;
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.8px;
+    border-bottom: 3px solid #1a1f5a;
+}
+
+.production-table-vertical .control-item-header {
+    width: 40%;
+}
+
+.production-table-vertical .status-header {
+    width: 25%;
+    text-align: center;
+}
+
+.production-table-vertical .observation-header {
+    width: 35%;
+    text-align: center;
+}
+
+/* Table Body */
+.production-table-vertical tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.production-table-vertical tbody tr:hover {
+    background-color: #f0f2ff;
+    transform: translateX(2px);
+}
+
+.production-table-vertical tbody tr:last-child {
+    border-bottom: none;
+}
+
+.production-table-vertical tbody tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.production-table-vertical tbody tr:nth-child(even):hover {
+    background-color: #f0f2ff;
+}
+
+/* Label Cells */
+.production-table-vertical .label-cell {
+    padding: 14px 20px;
+    font-weight: 600;
+    color: #374151;
+    background: linear-gradient(90deg, #f3f4f6 0%, #ffffff 100%);
+    border-right: 2px solid #e5e7eb;
+    font-size: 0.9rem;
+}
+
+/* Status Column */
+.production-table-vertical tbody td:nth-child(2) {
+    text-align: center;
+    padding: 10px 15px;
+}
+
+/* Select Inputs */
+.production-table-vertical select {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    cursor: pointer;
+    color: #374151;
+}
+
+.production-table-vertical select:hover {
+    border-color: #9ca3af;
+    background-color: #f9fafb;
+}
+
+.production-table-vertical select:focus {
+    border-color: #2a3ba8;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(42, 59, 168, 0.1);
+    background-color: #ffffff;
+}
+
+/* Conforme/Non Conforme Styling */
+.production-table-vertical select option[value="Conforme"] {
+    color: #059669;
+    font-weight: 600;
+}
+
+.production-table-vertical select option[value="Non Conforme"] {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.observation-cell {
+    vertical-align: top;
+    padding: 15px;
+    background-color: #ffffff;
+}
+
+/* Observation Textarea */
+.observation-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 400px;
+    padding: 16px;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+.observation-textarea:hover {
+    border-color: #9ca3af;
+    background-color: #f9fafb;
+}
+
+.observation-textarea:focus {
+    border-color: #2a3ba8;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(42, 59, 168, 0.1);
+    background-color: #ffffff;
+}
+
+.observation-textarea::placeholder {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* Disabled Select (Résultat Global) */
+.production-table-vertical select:disabled {
+    background-color: #f3f4f6;
+    cursor: not-allowed;
+    opacity: 0.7;
+    border-color: #d1d5db;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .final-control-info {
+        grid-template-columns: 1fr;
+    }
+
+    .production-table-vertical .control-item-header {
+        width: 50%;
+    }
+
+    .production-table-vertical .status-header {
+        width: 25%;
+    }
+
+    .production-table-vertical .observation-header {
+        width: 25%;
+    }
+
+    .production-table-vertical select {
+        max-width: 100%;
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+
+    .observation-textarea {
+        min-height: 300px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .rapport-section {
+        padding: 20px 15px;
+    }
+
+    .production-table-vertical thead th,
+    .production-table-vertical .label-cell {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+
+    .observation-textarea {
+        min-height: 250px;
+    }
+}

@@ -1,0 +1,158 @@
+/* Print-specific styles for PV Essai tables - Colorful design */
+@media print {
+  /* Force color printing for all pv essai elements */
+  *,
+  *:before,
+  *:after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  /* Ensure all pv essai elements maintain their colors */
+  .pvessai-printable-table,
+  .pvessai-printable-table *,
+  .pvessai-table-container,
+  .pvessai-printable-table-section,
+  .pvessai-table-title,
+  .pvessai-printable-table-title {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  .pvessai-printable-table {
+    page-break-inside: avoid !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border: 1px solid #888 !important;
+    border-collapse: collapse !important;
+  }
+  
+  .pvessai-printable-table th,
+  .pvessai-printable-table td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 4pt 6pt !important;
+    font-size: 9pt !important;
+    border: 0.5pt solid #888 !important;
+  }
+  
+  .pvessai-printable-table th {
+    background-color: #2a3b8f !important; /* Primary color for headers */
+    color: white !important; /* White text on primary color */
+    border-bottom: 1pt solid #1a2a6c !important; /* Darker border for emphasis */
+    font-weight: 600 !important;
+  }
+  
+  /* Alternate row styling for better readability */
+  .pvessai-printable-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9 !important;
+  }
+
+  .pvessai-printable-table tbody tr:nth-child(odd) {
+    background-color: #ffffff !important;
+  }
+  
+  /* General print styles for inputs */
+  .pvessai-input:not(.pvessai-voltage-input):not(.pvessai-resistance-input):not(.pvessai-dielectric-input):not(.pvessai-load-test-input):not(.pvessai-no-load-input):not(.pvessai-shortcircuit-input),
+  .pvessai-printable-input,
+  .pvessai-voltage-input,
+  .pvessai-resistance-input,
+  .pvessai-dielectric-input,
+  .pvessai-load-test-input,
+  .pvessai-no-load-input,
+  .pvessai-shortcircuit-input {
+    display: block !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    width: auto !important;
+    border: none !important;
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    font-size: 9pt !important;
+    max-width: none !important;
+    color: #222 !important;
+  }
+  
+  .pvessai-printable-table-section {
+    background: inherit !important;
+    box-shadow: none !important;
+    padding: 8pt 0 !important;
+    margin-bottom: 12pt !important;
+    page-break-inside: avoid !important;
+  }
+  
+  .pvessai-table-title,
+  .pvessai-printable-table-title {
+    font-size: 10pt !important;
+    margin-bottom: 4pt !important;
+    border-bottom: 0.5pt solid #888 !important;
+    padding-bottom: 2pt !important;
+    color: #2a3b8f !important; /* Primary color for titles */
+    font-weight: 600 !important;
+  }
+  
+  /* Remove any grayscale filters or print-specific overrides */
+  body,
+  html {
+    -webkit-filter: none !important;
+    filter: none !important;
+    background: white !important;
+  }
+  
+  /* Specific styles for different table types */
+  
+  /* No Load Test Table */
+  .pvessai-printable-table.no-load-test-table {
+    border: 1px solid #888 !important;
+  }
+  
+  .pvessai-printable-table.no-load-test-table th,
+  .pvessai-printable-table.no-load-test-table td {
+    border: 0.5pt solid #888 !important;
+  }
+  
+  /* Dielectric Test Table */
+  .pvessai-printable-table.dielectric-test-table th,
+  .pvessai-printable-table.dielectric-test-table td {
+    border: 0.5pt solid #888 !important;
+  }
+  
+  /* Short Circuit Test Table */
+  .pvessai-printable-table.short-circuit-test-table {
+    border: 1px solid #888 !important;
+  }
+  
+  .pvessai-printable-table.short-circuit-test-table th,
+  .pvessai-printable-table.short-circuit-test-table td {
+    border: 0.5pt solid #888 !important;
+  }
+  
+  /* Voltage Ratio Table */
+  .pvessai-printable-table.voltage-ratio-table th,
+  .pvessai-printable-table.voltage-ratio-table td {
+    border: 0.5pt solid #888 !important;
+  }
+  
+  /* Resistance Table */
+  .pvessai-printable-table.resistance-table {
+    border: 1px solid #888 !important;
+  }
+  
+  .pvessai-printable-table.resistance-table th,
+  .pvessai-printable-table.resistance-table td {
+    border: 0.5pt solid #888 !important;
+  }
+  
+  /* Load Test Table */
+  .pvessai-printable-table.load-test-table {
+    border: 1px solid #888 !important;
+  }
+  
+  .pvessai-printable-table.load-test-table th,
+  .pvessai-printable-table.load-test-table td {
+    border: 0.5pt solid #888 !important;
+  }
+}

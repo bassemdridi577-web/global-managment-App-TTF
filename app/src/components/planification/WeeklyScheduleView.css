@@ -1,0 +1,546 @@
+.weekly-schedule-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    animation: fadeIn 0.3s ease;
+}
+
+.weekly-schedule-modal {
+    background: white;
+    border-radius: 20px;
+    width: 98%;
+    max-width: 1600px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+.weekly-schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px 20px 0 0;
+    flex-shrink: 0;
+}
+
+.weekly-schedule-header h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-3px);
+}
+
+.weekly-schedule-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    background: #f8fafc;
+}
+
+.time-column {
+    width: 80px;
+    flex-shrink: 0;
+    background: white;
+    border-right: 2px solid #e0e7ff;
+    overflow-y: auto;
+}
+
+.time-header {
+    height: 60px;
+    border-bottom: 2px solid #e0e7ff;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.time-slot {
+    height: 60px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 5px;
+    border-bottom: 1px solid #f1f5f9;
+    position: relative;
+}
+
+.time-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.days-container {
+    display: flex;
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.day-column {
+    flex: 1;
+    min-width: 150px;
+    border-right: 1px solid #e0e7ff;
+    position: relative;
+}
+
+.day-column:last-child {
+    border-right: none;
+}
+
+.day-header {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-bottom: 2px solid #e0e7ff;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    gap: 4px;
+}
+
+.day-header.today {
+    background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%);
+}
+
+.day-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #667eea;
+    letter-spacing: 0.5px;
+}
+
+.day-header.today .day-name {
+    color: #065f46;
+}
+
+.day-date {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.day-header.today .day-date {
+    background: #10b981;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.day-schedule {
+    position: relative;
+    height: calc(24 * 60px);
+    /* 24 hours * 60px */
+}
+
+.hour-line {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.hour-line:nth-child(even) {
+    background: rgba(102, 126, 234, 0.02);
+}
+
+.operation-bar {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    border-radius: 6px;
+    padding: 6px 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+.operation-bar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 15;
+}
+
+.operation-bar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.operation-time {
+    font-size: 10px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.operation-name-short {
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.multiple-ops-indicator {
+    font-size: 9px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.3);
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-left: 4px;
+}
+
+/* Tooltip */
+.operation-tooltip {
+    position: fixed;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    min-width: 280px;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    pointer-events: none;
+    animation: tooltipFadeIn 0.2s ease;
+}
+
+.tooltip-count {
+    font-size: 13px;
+    font-weight: 700;
+    color: #667eea;
+    background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.tooltip-operation {
+    margin-bottom: 0;
+}
+
+.tooltip-operation-separator {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid #e0e7ff;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tooltip-header {
+    font-size: 16px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e7ff;
+}
+
+.tooltip-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tooltip-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.tooltip-label {
+    font-weight: 600;
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.tooltip-value {
+    color: #2c3e50;
+    text-align: right;
+    font-weight: 500;
+}
+
+/* Scrollbar styling */
+.days-container::-webkit-scrollbar,
+.time-column::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.days-container::-webkit-scrollbar-track,
+.time-column::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.days-container::-webkit-scrollbar-thumb,
+.time-column::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.days-container::-webkit-scrollbar-thumb:hover,
+.time-column::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .weekly-schedule-modal {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .weekly-schedule-header {
+        border-radius: 0;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .weekly-schedule-header h2 {
+        font-size: 18px;
+    }
+
+    .time-column {
+        width: 60px;
+    }
+
+    .time-label {
+        font-size: 10px;
+    }
+
+    .day-column {
+        min-width: 100px;
+    }
+
+    .operation-tooltip {
+        min-width: 240px;
+        max-width: 280px;
+        padding: 12px;
+    }
+
+    .tooltip-header {
+        font-size: 14px;
+    }
+
+    .tooltip-item {
+        font-size: 12px;
+    }
+}
+
+/* Modal Overlay */
+.operations-details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    animation: fadeIn 0.2s ease;
+}
+
+/* Modal Content */
+.operations-details-modal {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: scaleIn 0.2s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Modal Header */
+.operations-details-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.operations-details-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.close-details-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-details-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Modal Body */
+.operations-details-body {
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: #f8fafc;
+}
+
+/* Detail Card */
+.operation-detail-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease;
+}
+
+.operation-detail-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.operation-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.operation-detail-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.operation-detail-time {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* Detail Info Rows */
+.operation-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.info-label {
+    color: #64748b;
+    font-weight: 500;
+}
+
+.info-value {
+    color: #334155;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Scrollbar styling for modal */
+.operations-details-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.operations-details-body::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+.operations-details-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}

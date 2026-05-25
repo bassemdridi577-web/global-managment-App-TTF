@@ -1,0 +1,324 @@
+.ncr-page-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ncr-actions {
+    width: 100%;
+    max-width: 210mm;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.ncr-document {
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    background-color: white;
+    padding: 10mm;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    overflow-x: auto;
+}
+
+/* Base Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 13px;
+}
+
+th {
+    background-color: #f8f9fa;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* Header Table */
+.ncr-header-table {
+    margin-bottom: 10px;
+}
+
+.ncr-logo-cell {
+    width: 100px;
+    text-align: center;
+}
+
+.ncr-logo {
+    max-width: 80px;
+}
+
+.ncr-title-cell {
+    text-align: center;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.ncr-info-cell {
+    width: 60px;
+    background-color: #f8f9fa;
+}
+
+.ncr-val-cell {
+    width: 100px;
+}
+
+/* Main Table Adjustments */
+.ncr-main-table {
+    margin-top: 0;
+}
+
+.mt-minus-1 {
+    margin-top: -1px;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.v-top {
+    vertical-align: top;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.p-1 {
+    padding: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-underline {
+    text-decoration: underline;
+}
+
+.small-text {
+    font-size: 10px;
+    font-style: italic;
+}
+
+/* Form Elements */
+.ncr-field-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ncr-field-inline label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.ncr-field-inline input {
+    border: none;
+    border-bottom: 1px dotted #ccc;
+    flex-grow: 1;
+    padding: 2px 5px;
+}
+
+.ncr-field-inline input:focus {
+    outline: none;
+    background-color: #fff9c4;
+}
+
+.ncr-select {
+    border: none;
+    border-bottom: 1px dotted #ccc;
+    flex-grow: 1;
+    padding: 2px 5px;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.ncr-select:focus {
+    outline: none;
+    background-color: #fff9c4;
+}
+
+.ncr-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.ncr-borderless-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px dotted black;
+    padding: 2px;
+}
+
+.ncr-borderless-input:focus {
+    outline: none;
+    background-color: #fff9c4;
+}
+
+/* Textareas */
+.ncr-textarea {
+    width: 100%;
+    border: none;
+    resize: none;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.ncr-desc-textarea {
+    min-height: 300px;
+}
+
+.ncr-action-textarea {
+    min-height: 400px;
+}
+
+.ncr-textarea:focus {
+    outline: none;
+    background-color: #fff9c4;
+}
+
+/* Nested 5M Table */
+.ncr-nested-table {
+    height: 100%;
+}
+
+.ncr-nested-table td {
+    height: 60px;
+    /* Increased height for 5M items */
+}
+
+.ncr-nested-label {
+    width: 100px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.ncr-nested-table textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+    padding: 5px;
+    display: block;
+    box-sizing: border-box;
+}
+
+/* Footer Section */
+.ncr-footer-section {
+    border: 1px solid black;
+    margin-top: -1px;
+}
+
+.ncr-footer-title {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.ncr-footer-content {
+    padding: 15px;
+}
+
+.ncr-field-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.ncr-dotted-input {
+    border: none;
+    border-bottom: 1px dotted black;
+    flex-grow: 1;
+    padding: 2px 5px;
+}
+
+.ncr-footer-textarea {
+    width: 100%;
+    min-height: 100px;
+    border: none;
+    border-bottom: 1px dotted black;
+    resize: none;
+    margin-top: 10px;
+    line-height: 2;
+    /* Mimics dotted lines on paper */
+    background-image: linear-gradient(transparent 95%, #ccc 95%);
+    background-size: 100% 2em;
+}
+
+.ncr-signature-block {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+.w-100-px {
+    width: 100px;
+    flex-grow: 0 !important;
+}
+
+/* Buttons Style */
+.btn-primary {
+    background-color: #23286b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-success:disabled {
+    background-color: #94d3a2;
+    cursor: not-allowed;
+}
+
+
+
+.mt-1 {
+    margin-top: 10px;
+}
