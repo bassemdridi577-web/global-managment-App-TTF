@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/global-managment-App-TTF/static/css/main.823a7811.css",
+    "main.js": "/global-managment-App-TTF/static/js/main.c20197d9.js",
+    "static/js/206.c402fc42.chunk.js": "/global-managment-App-TTF/static/js/206.c402fc42.chunk.js",
+    "static/media/TT2.png": "/global-managment-App-TTF/static/media/TT2.bb3fbf3d8363e39c8f65.png",
+    "index.html": "/global-managment-App-TTF/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.823a7811.css",
+    "static/js/main.c20197d9.js"
+  ]
+}

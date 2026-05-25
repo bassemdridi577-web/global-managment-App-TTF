@@ -1,0 +1,40 @@
+/* Print-specific styles for PV Essai tables - Colorful design */
+@media print {
+  /* Force color printing for all pv essai elements */
+  *,
+  *:before,
+  *:after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  /* Ensure all pv essai elements maintain their colors */
+  .pvessai-printable-table,
+  .pvessai-printable-table *,
+  .pvessai-table-container,
+  .pvessai-printable-table-section,
+  .pvessai-table-title,
+  .pvessai-printable-table-title {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  .pvessai-printable-table {
+    page-break-inside: avoid !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border: 1px solid #000 !important;
+    border-collapse: collapse !important;
+  }
+  
+  .pvessai-printable-table th,
+  .pvessai-printable-table td {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 4pt 6pt !important;
+    border: 0.5pt solid #000 !important;
+  }
+  
+}
