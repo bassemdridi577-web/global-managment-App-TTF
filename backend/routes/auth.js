@@ -1,31 +1,49 @@
 const express = require('express');
 const router = express.Router();
 const prisma = require('../lib/prismaClient');
+const { authMiddleware } = require('../middleware/authMiddleware');
+const jwt = require('jsonwebtoken');
 
 // Login
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).json({ error: 'Username and password are required' });
   try {
-    const user = await prisma.user.findFirst({ where: { username: { equals: username } } });
-    if (!user || user.password !== password) return res.status(401).json({ error: 'Invalid username or password' });
-    res.json({ username: user.username, laboname: user.laboname });
+    const user = await prisma.user.findFirst({ where: { username: { equals: username, mode: 'insensitive' } } });
+    if (!user) {
+      return res.status(404).json({ error: "Nom d'utilisateur invalide" });
+    }
+    
+    if (user.password !== password) {
+      return res.status(401).json({ error: "Mot de passe invalide" });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { id: user.id, username: user.username, role: user.role },
+      process.env.JWT_SECRET || 'ttf-super-secret-key-2026',
+      { expiresIn: '7d' }
+    );
+
+    res.json({
+      token,
+      user: { id: user.id, username: user.username, laboname: user.laboname, email: user.email, role: user.role }
+    });
   } catch (error) {
     res.status(500).json({ error: 'Login failed', details: error.message });
   }
 });
 
-// Create user
-router.post('/users', async (req, res) => {
-  const { username, password, laboname } = req.body;
-  if (!username || !password || !laboname) return res.status(400).json({ error: 'All fields are required: username, password, laboname' });
+// Get current user
+router.get('/me', authMiddleware, async (req, res) => {
   try {
-    const existingUser = await prisma.user.findFirst({ where: { OR: [{ username }, { password }] } });
-    if (existingUser) return res.status(409).json({ error: 'le compte deja existe' });
-    const user = await prisma.user.create({ data: { username, password, laboname } });
-    res.status(201).json(user);
+    const user = await prisma.user.findUnique({ where: { id: req.user.id } });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.json({ id: user.id, username: user.username, laboname: user.laboname, email: user.email, role: user.role });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to create user', details: error.message });
+    res.status(500).json({ error: 'Failed to fetch user data', details: error.message });
   }
 });
 

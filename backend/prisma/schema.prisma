@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -9,10 +8,52 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String
-  password String
-  laboname String
+  id               Int             @id @default(autoincrement())
+  username         String
+  password         String
+  laboname         String
+  email            String?
+  role             String          @default("tester")
+  isHidden         Boolean         @default(false)
+  isOnline         Boolean         @default(false)
+  lastSeen         DateTime        @default(now())
+  aiChatHistory    AIChatHistory[]
+  aiChatSessions   AIChatSession[]
+  logs             ActionLog[]
+  receivedMessages Message[]       @relation("ReceivedMessages")
+  sentMessages     Message[]       @relation("SentMessages")
+}
+
+model AIChatSession {
+  id        Int             @id @default(autoincrement())
+  userId    Int
+  title     String          @default("New Chat")
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  messages  AIChatHistory[]
+  user      User            @relation(fields: [userId], references: [id])
+}
+
+model AIChatHistory {
+  id        Int            @id @default(autoincrement())
+  userId    Int
+  role      String
+  content   String
+  createdAt DateTime       @default(now())
+  sessionId Int?
+  session   AIChatSession? @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  user      User           @relation(fields: [userId], references: [id])
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  content    String?
+  imageUrl   String?
+  senderId   Int
+  receiverId Int
+  createdAt  DateTime @default(now())
+  receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  sender     User     @relation("SentMessages", fields: [senderId], references: [id])
 }
 
 model PvEssai {
@@ -24,25 +65,19 @@ model PvEssai {
   phases             Int?
   type               String?
   client             String?
-  mission            String?
   mtu1               Float?
   mtu2               Float?
   btu2               Float?
   prises             String?
   norme              String?
   couplage           String?
-  matiere            String?
-  refroidissement    String?
   bti2               Float?
   date               DateTime?
   voltage_ratio      Json?
-  voltage_ratio_2    Json?
   no_load_test       Json?
-  no_load_test_2     Json?
   short_circuit_test Json?
   dielectric_test    Json?
   resistance_test    Json?
-  bitention_tests    Json?
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
   bti2_2             String?
@@ -50,16 +85,25 @@ model PvEssai {
   mti2_1             String?
   operateur          String?
   conformite         String?
+  matiere            String?
+  bitention_tests    Json?
   bitention          String?
-  tensionType        String?
+  couplage2          String?
   list1              String?
   list2              String?
   list3              String?
   list4              String?
   mtU1_2             String?
-  couplage2          String?
+  voltage_ratio_2    Json?
+  refroidissement    String?
   mtu2_2             Float?
-  
+  no_load_test_2     Json?
+  tensionType        String?
+  mission            String?
+
+  @@index([numero])
+  @@index([client])
+  @@index([createdAt])
 }
 
 model Commande {
@@ -71,5 +115,153 @@ model Commande {
   status    String?  @default("pending")
   formData  Json?
   createdAt DateTime @default(now())
+  updatedAt DateTime         @updatedAt
+  operateur String?
+  colonne   String?
+  ProductionLine ProductionLine[]
+}
+
+model Stock {
+  id             Int                    @id @default(autoincrement())
+  articleName    String                 @unique
+  nombreUnite    Int
+  poid           Float?
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime               @updatedAt
+  unit           String?
+  transformators TransformatorArticle[]
+}
+
+model Transformator {
+  id        Int                    @id @default(autoincrement())
+  numero    String
+  puissance Float
+  createdAt DateTime               @default(now())
+  articles  TransformatorArticle[]
+}
+
+model TransformatorArticle {
+  id              Int           @id @default(autoincrement())
+  transformatorId Int
+  stockId         Int
+  quantity        Int
+  article         Stock         @relation(fields: [stockId], references: [id])
+  transformator   Transformator @relation(fields: [transformatorId], references: [id])
+}
+
+model ActionLog {
+  id        Int      @id @default(autoincrement())
+  action    String
+  details   Json?
+  createdAt DateTime @default(now())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model ProductionLine {
+  id                   Int              @id @default(autoincrement())
+  commandeId           Int
+  numeroTransformateur String
+  puissance            String?
+  u1u2                 String?
+  matiere              String?
+  client               String?
+  dateDebutPlanifiee   DateTime?
+  dateDebutReelle      DateTime?
+  dateFinTheorique     DateTime?
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+  stageDates           Json?
+  commande             Commande         @relation(fields: [commandeId], references: [id])
+  productionSteps      ProductionStep[]
+
+  @@index([commandeId])
+  @@index([dateDebutPlanifiee])
+}
+
+model ProductionStep {
+  id               Int            @id @default(autoincrement())
+  productionLineId Int
+  stepName         String
+  data             Json
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  productionLine   ProductionLine @relation(fields: [productionLineId], references: [id])
+}
+
+model Team {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  operators Operator[]
+  createdAt DateTime   @default(now())
+}
+
+model Operator {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  teamId    Int?
+  team      Team?    @relation(fields: [teamId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model NonConformityReport {
+  id              Int      @id @default(autoincrement())
+  date            DateTime
+  processus       String
+  origine         Json
+  description     String
+  analyse5M       Json
+  correction      Json
+  suiviEfficacite Json
+  operateur       String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model TransformerStudy {
+  id                    Int      @id @default(autoincrement())
+  nomEtude              String?
+  puissance             String?
+  donneesTransfo        Json
+  circuitMagnetique     Json
+  basseTension          Json
+  moyenneTension        Json
+  cuveEtRefroidissement Json
+  donneesCM4C           Json?
+  donneesCM4CComplementaire Json?
+  donneesP0             Json?
+  donneesBobinage       Json?
+  donneesThermique       Json?
+  donneesPerte          Json?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model FactureRevision {
+  id        Int      @id @default(autoincrement())
+  bctDate   String   @unique
+  euroRate  Float?
+  rows      Json
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Facture {
+  id                  Int      @id @default(autoincrement())
+  invoiceNumber       String   @unique
+  date                String
+  clientName          String
+  clientAddress       String?
+  clientCode          String?
+  paymentMethod       String?   @default("Espèce")
+  rows                Json
+  taxConfig           Json
+  subtotalHT          Float
+  tvaAmount           Float
+  subtotalTTC         Float
+  retenueSourceAmount Float
+  deductionTvaAmount  Float
+  totalTTC            Float
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
 }

@@ -1,0 +1,5 @@
+{
+  "autoBackupEnabled": false,
+  "backupRetentionDays": 7,
+  "lastBackupIndex": 1
+}

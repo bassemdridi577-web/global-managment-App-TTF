@@ -1,0 +1,138 @@
+┌─────────────────────────────────────────────────────────────────┐
+│           🔄 MULTI-API KEY FAILOVER SYSTEM                      │
+│                                                                 │
+│  Automatic rotation when keys hit rate limits or fail          │
+└─────────────────────────────────────────────────────────────────┘
+
+📊 SYSTEM FLOW:
+═══════════════
+
+   ┌──────────────┐
+   │  Start App   │
+   └──────┬───────┘
+          │
+          ▼
+   ┌──────────────┐
+   │  Load Keys   │ ✅ Loaded 4 API key(s) for failover
+   │  from .env   │
+   └──────┬───────┘
+          │
+          ▼
+   ┌──────────────┐
+   │ Use Key #1   │ 🔑 Primary key active
+   │  (Primary)   │
+   └──────┬───────┘
+          │
+          ▼
+   ┌──────────────┐
+   │ Send Request │
+   └──────┬───────┘
+          │
+          ├─────────────────┐
+          │                 │
+          ▼                 ▼
+   ┌──────────┐      ┌──────────────┐
+   │ Success  │      │ Rate Limit!  │ ⚠️ API key #1 hit rate limit
+   │    ✅    │      │   or Error   │
+   └──────────┘      └──────┬───────┘
+                            │
+                            ▼
+                     ┌──────────────┐
+                     │ Switch to    │ 🔄 Switching to API key #2
+                     │   Key #2     │
+                     └──────┬───────┘
+                            │
+                            ▼
+                     ┌──────────────┐
+                     │ Retry Request│
+                     └──────┬───────┘
+                            │
+                            ├─────────────────┐
+                            │                 │
+                            ▼                 ▼
+                     ┌──────────┐      ┌──────────────┐
+                     │ Success  │      │ Still Fails? │
+                     │    ✅    │      │              │
+                     └──────────┘      └──────┬───────┘
+                                              │
+                                              ▼
+                                       ┌──────────────┐
+                                       │ Try Key #3   │ 🔄 Next key
+                                       │ Then Key #4  │
+                                       └──────────────┘
+
+
+🔑 KEY STATES:
+═══════════════
+
+Key #1: ████████░░ (Active, 0 failures)
+Key #2: ██████████ (Standby, 0 failures)  
+Key #3: ██████████ (Standby, 0 failures)
+Key #4: ██████████ (Standby, 0 failures)
+
+After rate limit on Key #1:
+
+Key #1: ████░░░░░░ (Rate limited, 1 failure)
+Key #2: ████████░░ (Active, 0 failures) ← Now in use
+Key #3: ██████████ (Standby, 0 failures)
+Key #4: ██████████ (Standby, 0 failures)
+
+
+📈 CAPACITY INCREASE:
+═══════════════════════
+
+Single Key:
+├─ 15 requests/minute
+├─ 1,500 requests/day
+└─ 1M tokens/day
+
+With 4 Keys:
+├─ 60 requests/minute    (4x) 🚀
+├─ 6,000 requests/day    (4x) 🚀
+└─ 4M tokens/day         (4x) 🚀
+
+
+⚙️ CONFIGURATION (.env):
+═══════════════════════════
+
+GEMINI_API_KEY_1=AIzaSy...XXX  ← Primary
+GEMINI_API_KEY_2=AIzaSy...YYY  ← Backup 1
+GEMINI_API_KEY_3=AIzaSy...ZZZ  ← Backup 2
+GEMINI_API_KEY_4=AIzaSy...WWW  ← Backup 3
+
+
+🎯 FEATURES:
+═══════════════
+
+✅ Automatic failover
+✅ Rate limit detection
+✅ Smart retry logic
+✅ Failure tracking (max 3 per key)
+✅ Auto-recovery
+✅ Zero manual intervention
+✅ Production-ready
+
+
+🚀 USAGE:
+═══════════
+
+$ node gemini_chat.js
+
+✅ Loaded 4 API key(s) for failover
+Connected to gemini-2.5-flash using API key #1
+--------------------------------------------------
+You: Hello
+Gemini: thinking...
+⚠️  API key #1 hit rate limit (failure 1/3)
+🔄 Switching from API key #1 to API key #2
+🔄 Retrying with API key #2...
+Gemini: Hello! How can I help you today?
+
+
+📝 QUICK START:
+═══════════════════
+
+1. Get 4 API keys from: https://aistudio.google.com/app/apikey
+2. Add them to .env file (see .env.example)
+3. Run: node gemini_chat.js
+4. Enjoy 4x capacity and automatic failover! 🎉

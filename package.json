@@ -1,0 +1,27 @@
+{
+  "name": "systeme-gestion-globale",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "setup.bat",
+    "start": "start.bat",
+    "backend": "cd backend && npm start",
+    "frontend": "cd react-project/app && npm start",
+    "prisma:generate": "cd backend && npx prisma generate",
+    "prisma:push": "cd backend && npx prisma db push"
+  },
+  "workspaces": [
+    "backend",
+    "react-project/app"
+  ],
+  "overrides": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.22.3"
+  },
+  "dependencies": {
+    "@rollup/plugin-babel": "^5.3.1",
+    "picomatch": "^2.3.1",
+    "react-is": "^18.0.0"
+  }
+}
