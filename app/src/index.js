@@ -7,6 +7,18 @@ import './i18n';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// --- GitHub Pages SPA Routing Redirect Handler ---
+if (window.location.pathname !== '/' && window.location.search.startsWith('?/')) {
+  window.history.replaceState(
+    null,
+    null,
+    window.location.pathname.slice(0, -1) +
+    window.location.search.slice(2).replace(/~and~/g, '&') +
+    window.location.hash
+  );
+}
+
 root.render(
   <React.StrictMode>
     <Suspense fallback="loading...">
