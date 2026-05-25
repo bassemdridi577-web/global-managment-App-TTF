@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import './Sidebar.css';
 import {
   FaHome, FaTachometerAlt, FaPlus, FaShoppingCart, FaCog, FaUserShield,
-  FaTruck, FaIndustry, FaCalendarAlt, FaChartLine, FaExclamationTriangle,
-  FaCalculator, FaQuestionCircle, FaFileInvoiceDollar
+  FaIndustry, FaCalendarAlt, FaChartLine,
+  FaCalculator, FaQuestionCircle
 } from 'react-icons/fa';
 import { isFeatureEnabled } from '../../utils/featureToggles';
 
@@ -78,18 +78,7 @@ const Sidebar = ({ currentUser, isCollapsed }) => {
             </NavLink>
           </li>
         )}
-        {currentUser && (currentUser.role === 'admin' || currentUser.role === 'apro') && (
-          <li className={!isAuthenticated ? 'disabled' : ''}>
-            <NavLink
-              to="/approvisionnement"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-              onClick={e => !isAuthenticated && e.preventDefault()}
-            >
-              <FaTruck className="icon" />
-              <span>{t('sidebar.approvisionnement')}</span>
-            </NavLink>
-          </li>
-        )}
+
         {/* New Chaine de production Button */}
         {isFeatureEnabled('CHAINE_PRODUCTION') && (
           <li className={!isAuthenticated ? 'disabled' : ''}>
@@ -129,32 +118,7 @@ const Sidebar = ({ currentUser, isCollapsed }) => {
             </NavLink>
           </li>
         )}
-        {/* Quality Report Button */}
-        {isFeatureEnabled('FICHE_NON_CONFORMITE') && (
-          <li className={!isAuthenticated ? 'disabled' : ''}>
-            <NavLink
-              to={isAdmin ? "/quality/non-conformity-list" : "/quality/non-conformity-report"}
-              className={({ isActive }) => (isActive ? 'active' : '')}
-              onClick={e => !isAuthenticated && e.preventDefault()}
-            >
-              <FaExclamationTriangle className="icon" />
-              <span>{t('sidebar.non_conformity')}</span>
-            </NavLink>
-          </li>
-        )}
-        {/* Facture Button */}
-        {isFeatureEnabled('FACTURE') && (
-          <li className={!isAuthenticated ? 'disabled' : ''}>
-            <NavLink
-              to="/facture"
-              className={({ isActive }) => (isActive ? 'active' : '')}
-              onClick={e => !isAuthenticated && e.preventDefault()}
-            >
-              <FaFileInvoiceDollar className="icon" />
-              <span>{t('sidebar.facture')}</span>
-            </NavLink>
-          </li>
-        )}
+
         {/* Guide Button */}
         <li className={!isAuthenticated ? 'disabled' : ''}>
           <NavLink

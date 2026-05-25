@@ -3,6 +3,7 @@ import { useSession } from '../utils/session-service';
 import CreateAccountPopup from '../popups/Popups';
 import LoginPopup from '../popups/LoginPopup';
 import Footer from '../layout/Footer';
+import { FaInfoCircle } from 'react-icons/fa';
 import './acceuil.css';
 
 import { API_BASE } from '../../api';
@@ -74,6 +75,18 @@ const Acceuil = () => {
         <div className="acceuil-bg-decoration acceuil-bg-decoration-1"></div>
         <div className="acceuil-bg-decoration acceuil-bg-decoration-2"></div>
         <div className="acceuil-bg-decoration acceuil-bg-decoration-3"></div>
+
+        {/* Portfolio Demo Notice */}
+        <div className="acceuil-portfolio-banner">
+          <FaInfoCircle className="acceuil-portfolio-banner-icon" />
+          <div className="acceuil-portfolio-banner-content">
+            <strong>Démonstration Portfolio</strong>
+            <span>
+              Cette application est présentée en mode démonstration. Certaines fonctionnalités 
+              (Facturation, Fiche de Non-Conformité, Approvisionnement) ne sont pas accessibles dans cette version.
+            </span>
+          </div>
+        </div>
 
         <div className="acceuil-content">
           <div className="acceuil-logo-section">

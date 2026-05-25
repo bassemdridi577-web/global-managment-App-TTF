@@ -23,8 +23,7 @@ import FicheEssaisIndividuelTriphasePage from './components/fiche/FicheEssaisInd
 import FichesIndividuelles from './components/fiche/FichesIndividuelles.jsx';
 import FichesIndividuellesTriphase from './components/fiche/FichesIndividuellesTriphase.jsx';
 import Unauthorized from './components/Unauthorized.jsx';
-import Approvisionnement from './components/approvisionnement/Approvisionnement.jsx';
-import Stock from './components/approvisionnement/Stock.jsx';
+
 import ChaineDeProductionPage from './components/chaine-de-production/ChaineDeProductionPage.jsx';
 import ProductionSurveyPage from './components/chaine-de-production/ProductionSurveyPage.jsx';
 import ControleEnCoursDeFabricationPage from './components/chaine-de-production/ControleEnCoursDeFabricationPage.jsx';
@@ -100,8 +99,7 @@ const AppContent = () => {
                                 {isFeatureEnabled('COMMANDE') && (
                                     <Route path="/commande" element={<ProtectedRoute roles={['admin']}><CommandePage currentUser={controleur} /></ProtectedRoute>} />
                                 )}
-                                <Route path="/approvisionnement" element={<ProtectedRoute roles={['admin', 'apro']}><Approvisionnement /></ProtectedRoute>} />
-                                <Route path="/approvisionnement/stock" element={<ProtectedRoute roles={['admin', 'apro']}><Stock /></ProtectedRoute>} />
+
                                 {isFeatureEnabled('CHAINE_PRODUCTION') && (
                                     <Route path="/chaine-de-production" element={<ProtectedRoute roles={['admin']}><ChaineDeProductionPage /></ProtectedRoute>} />
                                 )}
